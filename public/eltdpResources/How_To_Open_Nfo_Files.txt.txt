@@ -1,0 +1,8 @@
+1.Right click on "ChingLiu.Install.Notes.nfo" (or any other nfo file)
+2.Select "open with" and select "Choose Program"
+3.Browse and find WorPad (or NotePad)
+4.And check "Always use the selected program...."
+
+OR
+1.Create a new txt file.
+2.Drag and drop nfo file in to the txt file.

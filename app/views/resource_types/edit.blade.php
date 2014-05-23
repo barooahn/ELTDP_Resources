@@ -1,0 +1,1 @@
+D:\wamp\www\ELTDP\app/views/resource_types/edit.blade.php
