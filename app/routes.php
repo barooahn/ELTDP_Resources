@@ -16,6 +16,11 @@ Route::get('/', function()
 	return View::make('home');
 });
 
+Route::get('test', function()
+{
+	return View::make('test');
+});
+
 Route::get('login', 'UsersController@getLogin');
 
 Route::post('login', 'UsersController@postLogin');
