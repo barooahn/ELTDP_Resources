@@ -15,22 +15,25 @@ ELTDP - Login
 
             <section id="content">
 
-                @if ($errors->any())
-                        <ul>
-                            {{ implode('', $errors->all('<li class="error">:message</li>')) }}
-                        </ul>
+                @if(Session::has('message'))
+                    <p class="alert">{{ Session::get('message') }}</p>
+
                 @endif
 
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
 
-                {{ Form::open(array('url' => 'login')) }}
+            
+                {{ Form::open(array('url' => 'login', 'POST')) }}
                     
                     <h1>Login Form</h1>
 
                     <div>
-                        <input type="text" placeholder="Email" required="" id="email" name="email" />
+                        <input type="text" placeholder="Email" id="email" name="email" />
                     </div>
                     <div>
-                        <input type="password" placeholder="Password" required="" id="password" name="password"/>
+                        <input type="password" placeholder="Password" id="password" name="password"/>
                     </div>
                     <div>
                         <input type="submit" value="Login" />

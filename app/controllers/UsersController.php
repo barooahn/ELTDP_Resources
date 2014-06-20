@@ -52,15 +52,14 @@ class UsersController extends BaseController {
 			$user = new User;
 			$user->name = $input['name'];
 			$user->email = $input['email'];
-			$user->password = $input['password'];
-			$key = hash('sha512', $user->name);
-			$user->key = $key;
+			$user->password =  Hash::make($input['password']);
+			$user->user_key = hash('sha512', $user->name);
 			$user->save();
 
 			
 
 		    if($user){
-			    $data = [ 'user' => $user, 'key' => $key];
+			    $data = [ 'user' => $user, 'key' => $user->user_key];
 			 
 			    // email view, data for view, closure to send email
 			    Mail::send('emails/auth/welcome', $data, function($message) use($user)
@@ -168,29 +167,26 @@ class UsersController extends BaseController {
 
 		public function postLogin()
 	{
-		
+
         $input = Input::all();
 
         $validation = Validator::make($input, array('email' => 'required|email', 'password' =>'required'));
 
-		if ($validation->passes())
-		{
+		if ($validation->passes()) {
 
 			$credentials = array('email' => $input['email'], 'password' => $input['password'], 'verified' => 1);
-			try
-			{
-				if(Auth::attempt($credentials)) {
-					return Redirect::intended(URL::route('users.show', array(Auth::user()->id)));
 
 
-				}
-			}
-			catch (Exception $e)
+			if(Auth::attempt($credentials)) {
 
-			{
-				return Redirect::to('login')
-					->with('message', $e->getMessage());
+				return Redirect::intended(URL::route('users.show', array(Auth::user()->id)));
 
+
+			} else 	{
+
+			return Redirect::to('login')
+		        ->with('message', 'Your username/password combination was incorrect')
+		        ->withInput();
 			}
 
 		}

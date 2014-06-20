@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddKeyToUsersTable extends Migration {
+class AddVerifiedToUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,8 +12,9 @@ class AddKeyToUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('users', function(Blueprint $table) {
-			$table->string('user_key');
+		Schema::table('users', function(Blueprint $table)
+		{
+			$table->integer('verified');
 		});
 	}
 
@@ -25,8 +26,9 @@ class AddKeyToUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('users', function(Blueprint $table) {
-			$table->dropColumn('user_key');
+		Schema::table('users', function(Blueprint $table)
+		{
+			$table->dropColumn('verified');
 		});
 	}
 
