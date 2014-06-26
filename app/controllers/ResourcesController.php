@@ -13,6 +13,8 @@ class ResourcesController extends \BaseController {
 	public function __construct(Resource $resource)
 	{
 		$this->resource = $resource;
+		$this->beforeFilter('auth');
+        $this->beforeFilter('csrf', array('on' => 'post'));
 	}
 
 	public function index()

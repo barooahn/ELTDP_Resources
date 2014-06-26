@@ -16,10 +16,11 @@ Route::get('/', function()
 	return View::make('home');
 });
 
-Route::get('test', function()
+Route::get('home', function()
 {
-	return View::make('test');
+	return View::make('home');
 });
+
 
 
 Route::get('login', 'UsersController@getLogin');
@@ -32,6 +33,6 @@ Route::get('logout', 'UsersController@getLogout');
 
 Route::resource('resources', 'ResourcesController');
 
+Route::resource('schools', 'SchoolsController');
+
 Route::resource('users', 'UsersController');
-
-
