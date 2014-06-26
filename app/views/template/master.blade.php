@@ -19,6 +19,7 @@
             <!-- Bootstrap -->
         {{ HTML::style('css/bootstrap.min.css') }}
         {{ HTML::style('css/bootstrap-select.min.css') }}
+        {{ HTML::style('css/custom.css') }}
 
     <body>
         <!--[if lt IE 7]>
@@ -28,7 +29,11 @@
         <!-- Add your site or application content here -->
         @include('template.navHeader')
 
-        @yield('main')
+        <div class="container">
+
+            @yield('main')
+
+        </div>
 
         @include('template.footer')
         {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}

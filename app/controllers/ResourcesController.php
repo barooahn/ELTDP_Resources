@@ -13,7 +13,7 @@ class ResourcesController extends \BaseController {
 	public function __construct(Resource $resource)
 	{
 		$this->resource = $resource;
-		$this->beforeFilter('auth');
+		$this->beforeFilter('auth', array('except' => array('index', 'show'))); 
         $this->beforeFilter('csrf', array('on' => 'post'));
 	}
 
@@ -71,7 +71,7 @@ class ResourcesController extends \BaseController {
 		if (Input::file('file')){
 			$file = Input::file('file');
 			$destinationPath = 'eltdpResources';
-			$filename = preg_replace('/\s+/', '_', $file->getClientOriginalName());
+			$filename = preg_replace('/\s+/', '_', $data['name']);
 			$extension = $file->getClientOriginalExtension();
 			$uploadSuccess = $file->move($destinationPath, $filename .'.'. $extension);
 

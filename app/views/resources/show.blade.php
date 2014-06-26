@@ -12,7 +12,7 @@ ELTDP - {{$resource->name}}
 
 	<div class="row">
 
-		<div class="col-md-8 ">	
+		<div class="col-md-6 ">	
 
 
 			<p>{{ link_to_route('resources.edit', 'Edit', $resource->id, array('class' => 'btn btn-info')) }}</p>
@@ -38,11 +38,33 @@ ELTDP - {{$resource->name}}
 			</div>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-6">
 
-			<h4>Creator</h4>
+			<h4>Creator - {{ $resource->user->name }}</h4>
+
+
 
 			<p>Other work by this creator</p>
+
+			@foreach (User::find($resource->user->id)->resources as $resource)
+
+			
+			  <div class="col-md-4 ">
+			    <div class="thumbnail">
+			      {{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
+			      <div class="caption">
+			        <h3>{{ $resource->name }}</h3>
+			        <p>{{ $resource->description }}</p>
+			        <p>
+			        	{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
+
+			        	{{ link_to_route('resources.edit', 'Edit', $resource->id, array('class' => 'btn btn-info')) }} 
+			        </p>
+			      </div>
+			    </div>
+			  </div>
+			
+			@endforeach
 
 		</div>
 

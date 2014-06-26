@@ -14,16 +14,16 @@ class Resource extends \Eloquent {
     );
 
 	// Don't forget to fill this array
-	protected $fillable = ['school', 'year', 'unit', 'name', 'type', 'description', 'file'];
+	protected $fillable = ['school', 'year', 'unit', 'name', 'type', 'description', 'file', 'user_id'];
 
 	public function comments()
     {
         return $this->hasMany('Comment');
     }
 
-    public function unit()
+    public function user()
     {
-        return $this->belongsTo('Unit');
+        return $this->belongsTo('User');
     }
 
 }

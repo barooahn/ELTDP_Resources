@@ -35,4 +35,10 @@ Route::resource('resources', 'ResourcesController');
 
 Route::resource('schools', 'SchoolsController');
 
+Route::resource('years', 'YearsController');
+
+Route::resource('units', 'UnitsController');
+
+Route::resource('type', 'TypeController');
+
 Route::resource('users', 'UsersController');

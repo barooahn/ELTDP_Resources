@@ -15,7 +15,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
          <li {{ (Request::is('/') ? 'class="active"' : '') }}>{{ HTML::link('/', ' Home', '', '', '<span class="glyphicon glyphicon-home"></span>') }}</li>
-        <li <li {{ (Request::is('resources/*') ? 'class="active"' : '') }}>{{ link_to_route('resources.create', 'New Resource') }} </li>
+        <li {{ (Request::is('resources/*') ? 'class="active"' : '') }}>{{ link_to_route('resources.create', 'New Resource') }} </li>
+        <li {{ (Request::is('resources') ? 'class="active"' : '') }}>{{ link_to_route('resources.index', 'Browse Resources') }} </li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -37,7 +39,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         @if(Auth::user())
-                  <li {{ (Request::is('users/*') ? 'class="active"' : '') }}>{{ link_to_route('users.show', ucwords(Auth::user()->username), Auth::user()->id ) }}</li>
+                  <li {{ (Request::is('users/*') ? 'class="active"' : '') }}>{{ link_to_route('users.show', ucwords(Auth::user()->name), Auth::user()->id ) }}</li>
                   <li>{{ HTML::link('logout', 'Logout') }}</li>
                 @else
 
