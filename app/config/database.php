@@ -1,6 +1,6 @@
 <?php
 
-$url = parse_url(getenv("DATABASE_URL"));
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $host = $url["host"];
 $username = $url["user"];
@@ -33,7 +33,7 @@ return array(
 	|
 	*/
 
-	'default' => 'pgsql',
+	'default' => 'mysql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -72,14 +72,14 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-	        'host'     => $host,
-	        'database' => $database,
-	        'username' => $username,
-	        'password' => $password,
-	        'charset'  => 'utf8',
-	        'prefix'   => '',
-	        'schema'   => 'public',
-			),
+			'host'     => 'localhost',
+			'database' => 'database',
+			'username' => 'root',
+			'password' => '',
+			'charset'  => 'utf8',
+			'prefix'   => '',
+			'schema'   => 'public',
+		),
 
 		'sqlsrv' => array(
 			'driver'   => 'sqlsrv',
