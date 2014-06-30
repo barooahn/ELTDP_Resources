@@ -19,9 +19,9 @@ class ResourcesController extends \BaseController {
 
 	public function index()
 	{
-		$resources = Resource::all();
+		$resources = Resource::orderBy('created_at', 'DESC')->get();
 
-		return View::make('resources.index', compact('resources'));
+		return View::make('resources.index', array('resources' => $resources));
 	}
 
 	/**

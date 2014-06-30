@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-         <li {{ (Request::is('/') ? 'class="active"' : '') }}>{{ HTML::link('/', ' Home', '', '', '<span class="glyphicon glyphicon-home"></span>') }}</li>
+         <li {{ (Request::is('/') ? 'class="active"' : '') }}>{{ HTML::link('/', ' Home', '', '', '') }}</li>
         <li {{ (Request::is('resources/*') ? 'class="active"' : '') }}>{{ link_to_route('resources.create', 'New Resource') }} </li>
         <li {{ (Request::is('resources') ? 'class="active"' : '') }}>{{ link_to_route('resources.index', 'Browse Resources') }} </li>
 
@@ -30,13 +30,18 @@
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
+
+        
+        <li>
+          <form class="navbar-form" role="search">
+            <div class="form-group" style="width: 240px;">
+              <select id="searchbox" name="q" placeholder="Search resources..." class="form-control"></select>
+            </div>
+          </form>
+        </li>
+
+
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
       <ul class="nav navbar-nav navbar-right">
         @if(Auth::user())
                   <li {{ (Request::is('users/*') ? 'class="active"' : '') }}>{{ link_to_route('users.show', ucwords(Auth::user()->name), Auth::user()->id ) }}</li>

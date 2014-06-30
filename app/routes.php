@@ -23,7 +23,7 @@ Route::get('home', function()
 
 
 
-Route::get('login', 'UsersController@getLogin');
+Route::get('login', array('as' => 'login', 'uses' =>'UsersController@getLogin'));
 
 Route::post('login', 'UsersController@postLogin');
 

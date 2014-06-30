@@ -14,9 +14,6 @@ ELTDP - {{$resource->name}}
 
 		<div class="col-md-6 ">	
 
-
-			<p>{{ link_to_route('resources.edit', 'Edit', $resource->id, array('class' => 'btn btn-info')) }}</p>
-
 			@if($resource->file)
 					    		
 				{{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
@@ -44,12 +41,12 @@ ELTDP - {{$resource->name}}
 
 
 
-			<p>Other work by this creator</p>
+			<p>Other work by {{ $resource->user->name }}:</p>
 
 			@foreach (User::find($resource->user->id)->resources as $resource)
 
 			
-			  <div class="col-md-4 ">
+			  <div class="col-xs-6 col-sm-6 col-md-6">
 			    <div class="thumbnail">
 			      {{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
 			      <div class="caption">
@@ -57,8 +54,6 @@ ELTDP - {{$resource->name}}
 			        <p>{{ $resource->description }}</p>
 			        <p>
 			        	{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
-
-			        	{{ link_to_route('resources.edit', 'Edit', $resource->id, array('class' => 'btn btn-info')) }} 
 			        </p>
 			      </div>
 			    </div>
