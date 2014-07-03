@@ -26,4 +26,12 @@ class Resource extends \Eloquent {
         return $this->belongsTo('User');
     }
 
+    public function scopeSearch($query, $search)
+    {
+        return $query
+            ->where('name', 'LIKE', "%$search%")
+            ->orWhere('description', 'LIKE', "%$search%")
+            ->orWhere('school', 'LIKE', "%$search%");
+    }
+
 }

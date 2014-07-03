@@ -60,7 +60,12 @@ ELTDP - All Resources
 			  	</div>
 			</div>
 		@endforeach
+
+	@else 
+	
+		<div class="alert alert-warning" role="alert">There were no search results for {{ Request::get('q') }}</div>	
 	
 	@endif
+
 </div>
 @stop

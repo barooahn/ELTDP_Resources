@@ -92,4 +92,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->hasMany('Resource');
     }
 
+    public function scopeSearch($query, $search)
+    {
+        return $query
+            ->where('name', 'LIKE', "%$search%");
+    }
+
 }

@@ -33,11 +33,14 @@
 
         
         <li>
-          <form class="navbar-form" role="search">
-            <div class="form-group" style="width: 240px;">
-              <select id="searchbox" name="q" placeholder="Search resources..." class="form-control"></select>
-            </div>
-          </form>
+
+
+          {{ Form::open(array('route' => 'search', 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
+              <div class="form-group">
+                {{ Form::input('search', 'q', null, array('class' => 'form_control', 'placeholder' => 'Search...')) }}
+              </div>
+          {{ Form::close() }}
+
         </li>
 
 
