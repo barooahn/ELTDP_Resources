@@ -105,7 +105,7 @@ ELTDP - Create New Resource
 					<li>
 						{{ Form::label('name', 'Name:', array('class' => 'label label-warning')) }}
 
-						{{Form::text('name', 'Animal flashcards', array('class' => 'custom_box form-control'), Input::old('name')) }}
+						{{Form::text('name', '', array('class' => 'custom_box form-control', 'placeholder' => 'Animal flashcards'), Input::old('name')) }}
 
 					</li>
 
@@ -121,17 +121,23 @@ ELTDP - Create New Resource
 					<li>
 						{{ Form::label('description', 'Description:', array('class' => 'label label-warning')) }}
 
-						{{Form::textarea('description', 'A set of 24 Animal flash cards') }}
+						{{Form::textarea('description', '', array('class' => '', 'placeholder' => 'A set of 24 Animal flash cards')) }}
+					</li>
+
+
+					<li>
+						{{ Form::label('private', 'Private:', array('class' => 'label label-warning')) }}
+
+						{{ Form::checkbox('private', '1') }}
 					</li>
 
 					<li>
-
 						{{Form::hidden('user_id', Auth::user()->id) }}
 					</li>
 
 					<li>
 
-						{{ Form::submit('Submit', array('class' => 'btn btn-default')) }}
+						{{ Form::submit('Submit', array('class' => 'btn btn-default', 'id' => 'form-submit')) }}
 					</li>
 				</ul>
 
@@ -142,6 +148,6 @@ ELTDP - Create New Resource
 
 </div>
 
-
+@include('partials.editor')
 @stop
 

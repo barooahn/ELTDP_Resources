@@ -17,27 +17,13 @@
          <li {{ (Request::is('/') ? 'class="active"' : '') }}>{{ HTML::link('/', ' Home', '', '', '') }}</li>
         <li {{ (Request::is('resources/*') ? 'class="active"' : '') }}>{{ link_to_route('resources.create', 'New Resource') }} </li>
         <li {{ (Request::is('resources') ? 'class="active"' : '') }}>{{ link_to_route('resources.index', 'Browse Resources') }} </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-
-        
+       
         <li>
 
 
           {{ Form::open(array('route' => 'search', 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
               <div class="form-group">
-                {{ Form::input('search', 'q', null, array('class' => 'form_control', 'placeholder' => 'Search...')) }}
+                {{ Form::input('search', 'q', null, array('class' => 'custom_box form_control', 'placeholder' => 'Search...')) }}
               </div>
           {{ Form::close() }}
 

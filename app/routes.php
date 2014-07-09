@@ -20,10 +20,12 @@ Route::get('home', function()
 {
 	return View::make('home');
 });
+
 Route::get('user/profile', array('as' => 'profile', function()
 {
     //
 }));
+
 Route::get('search', array('as' => 'search', function()
 {
 	$query = Request::get('q');
@@ -40,8 +42,6 @@ Route::get('search', array('as' => 'search', function()
 
 	return View::make('resources.index')->withResources($resources);
 	}
-
-
 
 }));
 

@@ -13,6 +13,7 @@ class Home extends \Eloquent {
 	public static function showTopResources($limit = 18446744073709551610) 
 	{
 		$topResources = DB::table('resources')
+					->where('private', '=', 0)
                     ->orderBy('rating', 'desc')
                     ->take($limit) 
                     ->get();
@@ -23,6 +24,7 @@ class Home extends \Eloquent {
 	public static function showNewResources($limit = 18446744073709551610) 
 	{
 		$newResources = DB::table('resources')
+					->where('private', '=', 0)
 					->orderBy('created_at', 'desc')
 					->take($limit) 
                     ->get();

@@ -17,7 +17,7 @@ ELTDP - All Resources
 
 		@foreach($resources as $resource)
 
-
+			@if ($resource->private != 1)
 			<div class="row ">
 				<div class="col-sm-12 col-md-12 row_bottom_pad thumbnail">
 					<div class="col-sm-4 col-md-4 row_bottom_pad ">
@@ -59,6 +59,8 @@ ELTDP - All Resources
 					
 			  	</div>
 			</div>
+
+			@endif
 		@endforeach
 
 	@else 

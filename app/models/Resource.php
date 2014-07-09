@@ -14,7 +14,7 @@ class Resource extends \Eloquent {
     );
 
 	// Don't forget to fill this array
-	protected $fillable = ['school', 'year', 'unit', 'name', 'type', 'description', 'file', 'user_id'];
+	protected $fillable = ['school', 'year', 'unit', 'name', 'type', 'description', 'file', 'user_id', 'private'];
 
 	public function comments()
     {

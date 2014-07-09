@@ -40,3 +40,10 @@
   height:270px;
   overflow: hidden;
  }
+
+ .private {
+
+    background-color: red;
+    color: white;
+    
+ }

@@ -20,6 +20,11 @@
         {{ HTML::style('css/bootstrap-select.min.css') }}
         <!--selectize-->
 
+        <!--medium-editor-->
+        <link rel="stylesheet" href="{{ url('css/medium-editor.css') }}">
+        <link rel="stylesheet" href="{{ url('css/medium-editor-insert.css') }}">
+
+
         <!--my css-->
         {{ HTML::style('css/custom.css') }}
 
