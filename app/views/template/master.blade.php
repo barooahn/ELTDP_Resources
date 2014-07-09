@@ -18,12 +18,8 @@
         <!-- Bootstrap -->
         {{ HTML::style('css/bootstrap.min.css') }}
         {{ HTML::style('css/bootstrap-select.min.css') }}
-        <!--selectize-->
-
-        <!--medium-editor-->
-        <link rel="stylesheet" href="{{ url('css/medium-editor.css') }}">
-        <link rel="stylesheet" href="{{ url('css/medium-editor-insert.css') }}">
-
+        <!--ckeditor-->
+        {{-- HTML::style('ckeditor/contents.css') --}}
 
         <!--my css-->
         {{ HTML::style('css/custom.css') }}
@@ -53,8 +49,15 @@
         {{ HTML::script('js/bootstrap.file-input.js') }}
         {{ HTML::script('js/bootstrap-select.min.js') }}
 
-        
+        <!--ckeditor-->
+        {{ HTML::script('ckeditor/ckeditor.js') }}
+        {{ HTML::script('ckeditor/config.js') }}
 
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace( 'editor1' );
+        </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -63,10 +66,5 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-
-
-
-         
-
     </body>
 </html>

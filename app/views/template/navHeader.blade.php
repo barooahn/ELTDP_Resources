@@ -23,7 +23,7 @@
 
           {{ Form::open(array('route' => 'search', 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
               <div class="form-group">
-                {{ Form::input('search', 'q', null, array('class' => 'custom_box form_control', 'placeholder' => 'Search...')) }}
+                {{ Form::input('search', 'q', null, array('class' => 'form-control', 'placeholder' => 'Search...')) }}
               </div>
           {{ Form::close() }}
 

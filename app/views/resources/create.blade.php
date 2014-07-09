@@ -121,7 +121,7 @@ ELTDP - Create New Resource
 					<li>
 						{{ Form::label('description', 'Description:', array('class' => 'label label-warning')) }}
 
-						{{Form::textarea('description', '', array('class' => '', 'placeholder' => 'A set of 24 Animal flash cards')) }}
+						{{Form::textarea('description', '', array('id' => 'editor1', 'class' => 'ckeditor', 'placeholder' => 'A set of 24 Animal flash cards')) }}
 					</li>
 
 
@@ -148,6 +148,6 @@ ELTDP - Create New Resource
 
 </div>
 
-@include('partials.editor')
+
 @stop
 
