@@ -59,6 +59,9 @@
             CKEDITOR.replace( 'editor1' );
         </script>
 
+        <!--for reviews-->
+        @yield('scripts')
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

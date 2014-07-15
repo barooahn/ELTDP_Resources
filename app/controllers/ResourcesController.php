@@ -117,8 +117,10 @@ class ResourcesController extends \BaseController {
 	public function show($id)
 	{
 		$resource = Resource::findOrFail($id);
+		// Get all reviews that are not spam for the resource and paginate them
+  		$reviews = $resource->reviews()->with('user')->approved()->notSpam()->orderBy('created_at','desc')->paginate(100);
 
-		return View::make('resources.show', compact('resource'));
+		return View::make('resources.show', array('resource'=>$resource,'reviews'=>$reviews));
 	}
 
 	/**
@@ -167,6 +169,31 @@ class ResourcesController extends \BaseController {
 		Resource::destroy($id);
 
 		return Redirect::route('resources.index');
+	}
+
+
+	// Route that handles submission of review - rating/comment
+
+	public function postReview($id)
+	{
+
+	  $input = array(
+		'comment' => Input::get('comment'),
+		'rating'  => Input::get('rating')
+	  );
+	  // instantiate Rating model
+	  $review = new Review;
+
+	  // Validate that the user's input corresponds to the rules specified in the review model
+	  $validator = Validator::make( $input, Review::$rules);
+
+	  // If input passes validation - store the review in DB, otherwise return to product page with error message 
+	  if ($validator->passes()) {
+		$review->storeReviewForProduct($id, $input['comment'], $input['rating']);
+		return Redirect::to('resources/'.$id.'#reviews-anchor')->with('review_posted',true);
+	  }
+
+	  return Redirect::to('resources/'.$id.'#reviews-anchor')->withErrors($validator)->withInput();
 	}
 
 }

@@ -9,16 +9,6 @@ ELTDP
 <div class="container">
 
     <h1 class="text-center">ELTDP Resources</h1>
-
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <form role="search">
-                  <input type="text" class="form-control" placeholder="Search">
-            </form>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
      
     <div class="row">
 
@@ -38,9 +28,23 @@ ELTDP
                             <p>
                                 {{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
                             </p>
+                        
+
+                            <div class="ratings">
+                                  <p class="pull-right">{{$resource->count_rating}} {{ Str::plural('review', $resource->count_rating);}}</p>
+                                  <p>
+                                    @for ($i=1; $i <= 5 ; $i++)
+                                      <span class="glyphicon glyphicon-star{{ ($i <= $resource->cache_rating) ? '' : '-empty'}}"></span>
+                                    @endfor
+                                    {{ number_format($resource->cache_rating, 1);}} stars
+                                  </p>
+                            </div>
+
                         </div>
                 </div>
             </div>
+
+            
 
         @endforeach
 
@@ -66,23 +70,21 @@ ELTDP
                             <p>
                                 {{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
                             </p>
+
+                             <div class="ratings">
+                                  <p class="pull-right">{{$resource->count_rating}} {{ Str::plural('review', $resource->count_rating);}}</p>
+                                  <p>
+                                    @for ($i=1; $i <= 5 ; $i++)
+                                      <span class="glyphicon glyphicon-star{{ ($i <= $resource->cache_rating) ? '' : '-empty'}}"></span>
+                                    @endfor
+                                    {{ number_format($resource->cache_rating, 1);}} stars
+                                  </p>
+                            </div>
                         </div>
                 </div>
             </div>
 
         @endforeach
-        
-    </div>
-
-    <div class="row">
-
-
-        <h4>Most commented</h4>
-
-        <div class="col-md-3"><h1> Most commented 1</h1></div>
-        <div class="col-md-3"><h1> Most commented 2</h1></div>
-        <div class="col-md-3"><h1> Most commented 3</h1></div>
-        <div class="col-md-3"><h1> Most commented 4</h1></div>
         
     </div>
 

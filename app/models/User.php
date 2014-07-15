@@ -98,4 +98,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
             ->where('name', 'LIKE', "%$search%");
     }
 
+    public function review()
+	{
+		return $this->hasMany('Review');
+	}
+
 }

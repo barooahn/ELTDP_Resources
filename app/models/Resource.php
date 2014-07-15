@@ -16,9 +16,9 @@ class Resource extends \Eloquent {
 	// Don't forget to fill this array
 	protected $fillable = ['school', 'year', 'unit', 'name', 'type', 'description', 'file', 'user_id', 'private'];
 
-	public function comments()
+	public function reviews()
     {
-        return $this->hasMany('Comment');
+        return $this->hasMany('Review');
     }
 
     public function user()
@@ -32,6 +32,15 @@ class Resource extends \Eloquent {
             ->where('name', 'LIKE', "%$search%")
             ->orWhere('description', 'LIKE', "%$search%")
             ->orWhere('school', 'LIKE', "%$search%");
+    }
+
+    public function recalculateRating()
+    {
+        $reviews = $this->reviews()->notSpam()->approved();
+        $avgRating = $reviews->avg('rating');
+        $this->cache_rating = round($avgRating,1);
+        $this->count_rating = $reviews->count();
+        $this->save();
     }
 
 }

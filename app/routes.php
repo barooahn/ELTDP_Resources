@@ -55,6 +55,8 @@ Route::get('logout', 'UsersController@getLogout');
 
 Route::resource('resources', 'ResourcesController');
 
+Route::post('resources/{id}', 'ResourcesController@postReview');
+
 Route::resource('schools', 'SchoolsController');
 
 Route::resource('years', 'YearsController');

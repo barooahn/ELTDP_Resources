@@ -14,7 +14,7 @@ class Home extends \Eloquent {
 	{
 		$topResources = DB::table('resources')
 					->where('private', '=', 0)
-                    ->orderBy('rating', 'desc')
+                    ->orderBy('cache_rating', 'desc')
                     ->take($limit) 
                     ->get();
 
