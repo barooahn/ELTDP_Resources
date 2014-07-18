@@ -19,7 +19,7 @@ class ResourcesController extends \BaseController {
 
 	public function index()
 	{
-		$resources = Resource::orderBy('created_at', 'DESC')->get();
+		$resources = Resource::orderBy('created_at', 'DESC')->paginate(10);
 
 		return View::make('resources.index', array('resources' => $resources));
 	}
@@ -194,6 +194,12 @@ class ResourcesController extends \BaseController {
 	  }
 
 	  return Redirect::to('resources/'.$id.'#reviews-anchor')->withErrors($validator)->withInput();
+	}
+
+	public function add_to_user($id)
+	{
+
+	 return 'added';
 	}
 
 }

@@ -57,6 +57,8 @@ Route::resource('resources', 'ResourcesController');
 
 Route::post('resources/{id}', 'ResourcesController@postReview');
 
+Route::get('add_to_user', array('as' => 'add_to_user', 'uses' =>'ResourcesController@add_to_user'));
+
 Route::resource('schools', 'SchoolsController');
 
 Route::resource('years', 'YearsController');

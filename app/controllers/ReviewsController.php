@@ -9,7 +9,7 @@ class ReviewsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$reviews = Review::all();
+		$reviews = Review::all()->paginate(10);
 
 		return View::make('reviews.index', compact('reviews'));
 	}
