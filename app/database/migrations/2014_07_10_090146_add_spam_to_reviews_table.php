@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddSpamToCommentsTable extends Migration {
+class AddSpamToReviewsTable extends Migration {
 
 	/**
 	 * Run the migrations.
