@@ -15,12 +15,6 @@ ELTDP - All Resources
 
 		<p>{{ link_to_route('resources.create', 'Add new resource', array(), array('class' => 'btn btn-info')) }}</p>
 
-		<div class="row">
-				<div class="col-sm-12 col-md-12">
-					<div class="center"> {{ $resources->links() }} </div>
-			</div>
-		</div>
-
 		@foreach($resources as $resource)
 
 			@if ($resource->private != 1)
@@ -60,10 +54,6 @@ ELTDP - All Resources
 							{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }}
 
 						</p>
-
-						<p>
-							@include('template.review')
-						</p>
 					</div>
 							
 					
@@ -72,12 +62,6 @@ ELTDP - All Resources
 
 			@endif
 		@endforeach
-
-		<div class="row">
-				<div class="col-sm-12 col-md-12">
-					<div class="center"> {{ $resources->links() }} </div>
-			</div>
-		</div>
 
 	@else 
 	

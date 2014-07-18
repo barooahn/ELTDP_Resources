@@ -5,8 +5,56 @@
 ELTDP - {{$resource->name}}
 @stop
 
-@section('template.reviewScript')
-	{{-- review script --}}
+@section('scripts')
+  {{HTML::script('js/expanding.js')}}
+  {{HTML::script('js/starrr.js')}}
+
+  <script type="text/javascript">
+    $(function(){
+
+      // initialize the autosize plugin on the review text area
+      $('#new-review').autosize({append: "\n"});
+
+      var reviewBox = $('#post-review-box');
+      var newReview = $('#new-review');
+      var openReviewBtn = $('#open-review-box');
+      var closeReviewBtn = $('#close-review-box');
+      var ratingsField = $('#ratings-hidden');
+
+      openReviewBtn.click(function(e)
+      {
+        reviewBox.slideDown(400, function()
+          {
+            $('#new-review').trigger('autosize.resize');
+            newReview.focus();
+          });
+        openReviewBtn.fadeOut(100);
+        closeReviewBtn.show();
+      });
+
+      closeReviewBtn.click(function(e)
+      {
+        e.preventDefault();
+        reviewBox.slideUp(300, function()
+          {
+            newReview.focus();
+            openReviewBtn.fadeIn(200);
+          });
+        closeReviewBtn.hide();
+        
+      });
+
+      // If there were validation errors we need to open the comment form programmatically 
+      @if($errors->first('comment') || $errors->first('rating'))
+        openReviewBtn.click();
+      @endif
+
+      // Bind the change event for the star rating - store the rating value in a hidden field
+      $('.starrr').on('starrr:change', function(e, value){
+        ratingsField.val(value);
+      });
+    });
+  </script>
 @stop
 
 @section('main')
@@ -127,29 +175,18 @@ ELTDP - {{$resource->name}}
 
 				@if ($resource->private != 1)
 					<div class="col-xs-6 col-sm-6 col-md-6">
-						<div class="thumbnail">
-				            <div class="frame">   
-				                {{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
-				            </div>
-				            <div class="caption">
-				                <h3>{{ $resource->name }}</h3>
-				                <p>{{ implode(' ', array_slice(explode(' ', $resource->description), 0, 20)) }}...</p>
-				                <p>
-				                    {{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
-                        </p>
-
-				                @if(Auth::check())
-
-                        <p>
-                           {{ link_to_route('add_to_user', 'Add to my resources...', $resource->id, array('class' => 'btn btn-warning')) }} 
-                        </p>   
-                        @endif
-
-                        
-
-				                @include('template.review')
-				            </div>
-				        </div>
+					<div class="thumbnail">
+						<div class="frame"> 	
+					  		{{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
+					  	</div>
+					  <div class="caption">
+					    <h3>{{ $resource->name }}</h3>
+					    <p>{{ implode(' ', array_slice(explode(' ', $resource->description), 0, 30)) }}...</p>
+					    <p>
+					    	{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
+					    </p>
+					  </div>
+					</div>
 					</div>
 	
 				@endif
@@ -159,6 +196,18 @@ ELTDP - {{$resource->name}}
 		</div>
 
 	</div>
+
+	<div class="row">
+
+		<div class="col-md-6">
+
+			<div class="well">
+
+	        </div>
+
+        </div>
+
+    </div>
 
 </div>
 
