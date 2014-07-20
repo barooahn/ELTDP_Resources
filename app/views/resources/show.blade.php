@@ -65,7 +65,7 @@ ELTDP - {{$resource->name}}
 	<div class="row">
 
 		<div class="col-md-6 ">	
-			<div class="thumbnail">
+			<div class="thumbnail thumbnail_small">
 
 				@if($resource->file)
 
@@ -175,7 +175,7 @@ ELTDP - {{$resource->name}}
 
 				@if ($resource->private != 1)
 					<div class="col-xs-6 col-sm-6 col-md-6">
-					<div class="thumbnail">
+					<div class="thumbnail thumbnail_small">
 						<div class="frame"> 	
 					  		{{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
 					  	</div>
@@ -196,18 +196,6 @@ ELTDP - {{$resource->name}}
 		</div>
 
 	</div>
-
-	<div class="row">
-
-		<div class="col-md-6">
-
-			<div class="well">
-
-	        </div>
-
-        </div>
-
-    </div>
 
 </div>
 

@@ -60,3 +60,6 @@
     font-size: 24px;
 }    
 
+.thumbnail_small {
+     min-height: 568px;
+}
