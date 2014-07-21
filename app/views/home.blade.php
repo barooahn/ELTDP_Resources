@@ -18,7 +18,7 @@ ELTDP
         @foreach($resources as $resource)
         
             <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="thumbnail">
+                <div class="thumbnail thumbnail_small">
                         <div class="frame">   
                                 {{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
                         </div>
@@ -60,7 +60,7 @@ ELTDP
         @foreach($resources as $resource)
         
             <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="thumbnail">
+                <div class="thumbnail thumbnail_small">
                         <div class="frame">   
                                 {{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
                         </div>
