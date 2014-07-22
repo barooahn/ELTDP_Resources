@@ -64,7 +64,7 @@ ELTDP - {{$resource->name}}
 
 	<div class="row">
 
-		<div class="col-md-6 ">	
+		<div class="col-md-12 ">	
 			<div class="thumbnail thumbnail_small">
 
 				@if($resource->file)
@@ -163,34 +163,14 @@ ELTDP - {{$resource->name}}
 	<!-- end of reviews -->
 
 
-		<div class="col-md-6">
+		<div class="col-md-12">
 
-			<h4>Creator - {{ $resource->user->name }}</h4>
-
-
-
-			<p>Other work by {{ $resource->user->name }}:</p>
+      <h3>Other work by {{ $resource->user->name }}:</h3>			
 
 			@foreach (User::find($resource->user->id)->resources as $resource)
 
-				@if ($resource->private != 1)
-					<div class="col-xs-6 col-sm-6 col-md-6">
-					<div class="thumbnail thumbnail_small">
-						<div class="frame"> 	
-					  		{{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
-					  	</div>
-					  <div class="caption">
-					    <h3>{{ $resource->name }}</h3>
-					    <p>{{ implode(' ', array_slice(explode(' ', $resource->description), 0, 30)) }}...</p>
-					    <p>
-					    	{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
-					    </p>
-					  </div>
-					</div>
-					</div>
-	
-				@endif
-			
+        @include('template.thumbnail')
+
 			@endforeach
 
 		</div>
