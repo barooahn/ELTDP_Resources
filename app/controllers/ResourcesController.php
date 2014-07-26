@@ -68,8 +68,10 @@ class ResourcesController extends \BaseController {
 
 
 
-		if (Input::file('file')){
+		if (Input::file('file'))
+		{
 			$file = Input::file('file');
+			return Resource::getExtensionType($file);
 			$destinationPath = 'eltdpResources';
 			$filename = preg_replace('/\s+/', '_', $data['name']);
 			$extension = $file->getClientOriginalExtension();
@@ -196,4 +198,19 @@ class ResourcesController extends \BaseController {
 	  return Redirect::to('resources/'.$id.'#reviews-anchor')->withErrors($validator)->withInput();
 	}
 
+	public function makePublic($id)
+	{
+		$resource = Resource::findOrFail($id);
+		$resource->private = 0;
+		$resource->save();
+		return View::make('users.show');
+	}
+
+	public function makePrivate($id)
+	{
+		$resource = Resource::findOrFail($id);
+		$resource->private = 1;
+		$resource->save();
+		return View::make('users.show');
+	}
 }

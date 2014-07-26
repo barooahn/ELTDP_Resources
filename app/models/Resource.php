@@ -43,4 +43,47 @@ class Resource extends \Eloquent {
         $this->save();
     }
 
+    public static function getExtensionType($file)
+    {
+        $extension = $file->getClientOriginalExtension();
+
+        switch ($extension) {
+            case 'pdf':
+            case 'PDF':
+                $fileType = 'pdf';
+                break;
+            
+            case 'doc':
+            case 'DOC':
+            case 'docx':
+            case 'DOCX':
+                $fileType = 'word';
+                break;
+            
+            case 'jpg':
+            case 'JPG':
+            case 'png':
+            case 'PNG':
+            case 'bmp':
+                $fileType = 'image';
+                break;
+            
+            case 'mp3':
+            case 'MP3':
+                $fileType = 'audio';
+                break;
+
+            case 'mp4':
+            case 'MP4':
+                $fileType = 'video';
+                break;
+                
+            default:
+                $fileType = null;
+                break;
+        }
+        
+        return $fileType;
+    }
+
 }

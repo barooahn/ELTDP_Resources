@@ -42,7 +42,7 @@
  }
 
  .private {
-
+    text-align: center;
     background-color: red;
     color: white;
     
@@ -65,14 +65,14 @@
 }
 
 .thumb_container {
-  position: absolute;
-color: red;
-/* border: 1px solid black; */
-height: 50px;
-bottom: 7%;
-width: 80%;
+    position: absolute;
+    color: red;
+    /* border: 1px solid black; */
+    height: 50px;
+    bottom: 7%;
+    width: 80%;
 }
 
-.buttons_review {
-
+input {
+    color: blue;
 }

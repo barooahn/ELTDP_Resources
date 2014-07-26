@@ -24,13 +24,13 @@ ELTDP - Create New Resource
 
 
 	<div class="row">
-	    <div class="col-md-5">
+	    <div class="col-md-12">
 
 			{{ Form::open(array('route' => 'resources.store', 'files' => true)) }}
 
 				<ul>
 
-					<li>
+					<li><p>
 						{{ Form::label('school', 'School:', array('class' => 'label label-warning')) }}
 
 						
@@ -48,9 +48,9 @@ ELTDP - Create New Resource
 						@endif
 
 
-					</li>
+					</li></p>
 
-					<li>
+					<li><p>
 
 						{{ Form::label('year', 'Year:', array('class' => 'label label-warning')) }}
 
@@ -66,9 +66,9 @@ ELTDP - Create New Resource
 
 						@endif
 
-					</li>
+					</li></p>
 
-					<li>
+					<li><p>
 						{{ Form::label('unit', 'Unit:', array('class' => 'label label-warning')) }}
 
 						@if (count($options['unit_options']) != null)
@@ -83,9 +83,9 @@ ELTDP - Create New Resource
 
 						@endif
 
-					</li>
+					</li></p>
 
-					<li>
+					<li><p>
 						{{ Form::label('type', 'Type:', array('class' => 'label label-warning')) }}
 					
 						{{ Form::select('type', $options['resourceType_options'] , Input::old('type')) }}
@@ -100,45 +100,45 @@ ELTDP - Create New Resource
 
 						@endif
 
-					</li>
+					</li></p>
 
-					<li>
+					<li><p>
 						{{ Form::label('name', 'Name:', array('class' => 'label label-warning')) }}
 
 						{{Form::text('name', '', array('class' => 'custom_box form-control', 'placeholder' => 'Animal flashcards'), Input::old('name')) }}
 
-					</li>
+					</li></p>
 
-					<li>
+					<li><p>
 				        {{ Form::label('file', 'File to upload:', array('class' => 'label label-warning')) }}
 
 				       
 				        {{ Form::file('file') }}
 
 				        
-				    </li>
+				    </li></p>
 
-					<li>
+					<li><p>
 						{{ Form::label('description', 'Description:', array('class' => 'label label-warning')) }}
 
 						{{Form::textarea('description', '', array('id' => 'editor1', 'class' => 'ckeditor', 'placeholder' => 'A set of 24 Animal flash cards')) }}
-					</li>
+					</li></p>
 
 
-					<li>
+					<li><p>
 						{{ Form::label('private', 'Private:', array('class' => 'label label-warning')) }}
 
 						{{ Form::checkbox('private', '1') }}
-					</li>
+					</li></p>
 
-					<li>
+					<li><p>
 						{{Form::hidden('user_id', Auth::user()->id) }}
-					</li>
+					</li></p>
 
-					<li>
+					<li><p>
 
 						{{ Form::submit('Submit', array('class' => 'btn btn-default', 'id' => 'form-submit')) }}
-					</li>
+					</li></p>
 				</ul>
 
 			{{ Form::close() }}

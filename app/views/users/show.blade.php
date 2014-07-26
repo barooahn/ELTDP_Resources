@@ -19,7 +19,7 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 				  <div class="col-md-2 col-md-pull-10 buttons">
 
 				  	<span class = "padding">
-				  		{{ link_to_route('users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) }} 
+				  		{{ link_to_route('users.edit', 'Edit', array(Auth::user()->id), array('class' => 'btn btn-info')) }} 
 				  		</span>
 					<span class = "padding">
 						{{ Form::open(array('method' => 'DELETE', 'route' => array('users.destroy',  Auth::user()->id))) }}
@@ -34,23 +34,23 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 
 	<div class="row">
 
-		<div class="col-md-6 centered">
+		<div class="col-xs-12 col-sm-12 col-md-6">
 
-			<h3>Resources you have tried </h3>
+			<h3 class="centered">Resources you have tried </h3>
 
 		</div>
 
 
-		<div class="col-md-6 centered">
+		<div class="col-xs-12 col-sm-6 col-md-6">
 
-			<h3>Your resources </h3>
+			<h3  class="centered">Your resources </h3>
 
-			@foreach (User::find($user->id)->resources as $resource)
+			@foreach (User::find(Auth::user()->id)->resources as $resource)
 
-				  <div class="col-xs-6 col-sm-6 col-md-6">
-					    <div class="thumbnail">
+				  <div class="col-xs-12 col-sm-6 col-md-6">
+					    <div class="thumbnail thumbnail_small">
 					    	<div class="frame"> 	
-					      		{{HTML::image($resource->file, $resource->name ,$attributes = array('height' => '100%'))}}
+					      		{{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
 					     	</div>
 					      	<div class="caption">
 					        	<h3>{{ $resource->name }}</h3>
@@ -58,6 +58,12 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 					        	</p>
 					        	<p>
 					        		{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
+					        		@if ($resource->private != 1)
+					        			{{ link_to_route('makePrivate', 'Make Private', $resource->id, array('class' => 'btn btn-danger')) }} 
+					        		@endif
+					        		@if ($resource->private == 1)
+					        			{{ link_to_route('makePublic', 'Make Public', $resource->id, array('class' => 'btn btn-success')) }}
+					        		@endif
 					        	</p>
 					    	</div>
 
