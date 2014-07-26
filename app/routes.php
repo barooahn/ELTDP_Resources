@@ -70,3 +70,5 @@ Route::resource('units', 'UnitsController');
 Route::resource('type', 'TypeController');
 
 Route::resource('users', 'UsersController');
+
+Route::get('addToUser/{id}', array('as' => 'addToUser', 'uses' =>'UsersController@addToUser'));

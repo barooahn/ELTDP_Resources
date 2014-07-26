@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddApprovedToCommentsTable extends Migration {
+class AddApprovedToReviewsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,7 +14,7 @@ class AddApprovedToCommentsTable extends Migration {
 	{
 		Schema::table('reviews', function(Blueprint $table)
 		{
-			$table->tinyinteger('approved');
+			$table->tinyinteger('approved')->default(1);
 		});
 	}
 

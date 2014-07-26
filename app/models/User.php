@@ -87,20 +87,31 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
-		public function resources()
-    {
-        return $this->hasMany('Resource');
-    }
-
     public function scopeSearch($query, $search)
     {
         return $query
             ->where('name', 'LIKE', "%$search%");
     }
 
+    public function resources()
+    {
+        return $this->hasMany('Resource');
+    }
+
+    public function resource()
+    {
+        return $this->belongsToMany('Resource')->withTimestamps();;
+    }
+
     public function review()
 	{
 		return $this->hasMany('Review');
+	}
+
+	public static function showLiked($id) 
+	{
+		$user = User::find($id);
+    	return $user->resource;
 	}
 
 }

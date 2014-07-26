@@ -198,7 +198,7 @@ class UsersController extends BaseController {
 
 	public function getLogout() {
 		Auth::logout();
-		return Redirect::to('home');
+		return Redirect::to('home')->with('message', 'You are now logged out.');
 
 	}
 
@@ -222,8 +222,20 @@ class UsersController extends BaseController {
 		$user->key = '';
 		$user->save();
 		// display success message
-		return Redirect::to('login');
+		return Redirect::to('login')->with('message', 'Your account is now valid.');
 
 	}
+	public function addToUser($resource_id){
+		$resource = Resource::findOrFail($resource_id);
+		$user = Auth::user();
 
+
+		if (!$user->resource->contains($resource->id)) {
+		    $user->resource()->save($resource);
+		    return Redirect::back()->with('message', "$resource->name Added to your account.");
+		}
+		
+		return Redirect::back()->with('warning', "$resource->name already in your account.");
+
+	}
 }

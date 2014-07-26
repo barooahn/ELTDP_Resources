@@ -38,6 +38,32 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 
 			<h3 class="centered">Resources you have tried </h3>
 
+			@foreach (User::showLiked(Auth::user()->id) as $resource)
+
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					    <div class="thumbnail thumbnail_small">
+					    	<div class="frame"> 	
+					      		{{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
+					     	</div>
+					      	<div class="caption">
+					        	<h3>{{ $resource->name }}</h3>
+					        	<p>{{ implode(' ', array_slice(explode(' ', $resource->description), 0, 30)) }}...
+					        	</p>
+					        	<p>
+					        		{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
+					        	</p>
+					    	</div>
+
+					      	@if ($resource->private == 1)
+						    	<div class="private">
+						    		<p><strong>Private</strong></p>
+						    	</div>
+						    @endif
+					    </div>
+				  </div>
+
+			@endforeach
+
 		</div>
 
 

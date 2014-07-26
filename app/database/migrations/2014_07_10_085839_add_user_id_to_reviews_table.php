@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddUserIdToCommentsTable extends Migration {
+class AddUserIdToReviewsTable extends Migration {
 
 	/**
 	 * Run the migrations.

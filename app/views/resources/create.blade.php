@@ -10,19 +10,6 @@ ELTDP - Create New Resource
 <div class="container">
 	<h1>New Resource</h1> 
 
-
-	@if (Session::has('errors'))
-
-	<div class="alert alert-danger">
-
-		<ul>
-			{{ implode('', $errors->all('<li class="error">:message</li>')) }}
-		</ul>
-
-	</div>
-	@endif
-
-
 	<div class="row">
 	    <div class="col-md-12">
 

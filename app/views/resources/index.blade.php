@@ -37,7 +37,7 @@ ELTDP - All Resources
 
 					<div class="col-sm-4 col-md-4 row_bottom_pad ">	
 						<h4>Description</h4>
-						<p class="short_description">{{ $resource->description }}... </p>
+						<p>{{ implode(' ', array_slice(explode(' ', $resource->description), 0, 80)) }}...</p>
 
 					</div>
 

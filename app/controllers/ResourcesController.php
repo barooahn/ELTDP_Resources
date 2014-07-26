@@ -71,7 +71,6 @@ class ResourcesController extends \BaseController {
 		if (Input::file('file'))
 		{
 			$file = Input::file('file');
-			return Resource::getExtensionType($file);
 			$destinationPath = 'eltdpResources';
 			$filename = preg_replace('/\s+/', '_', $data['name']);
 			$extension = $file->getClientOriginalExtension();

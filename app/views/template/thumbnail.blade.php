@@ -12,7 +12,9 @@
                         <p>
                             {{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
                             @if(Auth::user())
-                                {{ link_to_route('resources.show', 'Add to My Home', $resource->id, array('class' => 'btn btn-warning')) }} 
+                                @if (!Auth::user()->resource->contains($resource->id)) 
+                                    {{ link_to_route('addToUser', 'Add to My Home', $resource->id, array('class' => 'btn btn-warning')) }} 
+                                @endif
                             @endif
                         </p>
 

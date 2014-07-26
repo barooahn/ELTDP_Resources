@@ -34,6 +34,24 @@
 
         <div class="container">
 
+            @if(Session::has('message'))
+                <p class="alert alert-info">{{ Session::get('message') }}</p>
+
+            @endif
+
+             @if(Session::has('warning'))
+                <p class="alert alert-warning">{{ Session::get('warning') }}</p>
+
+            @endif
+
+            @if(Session::has('errors'))
+
+                @foreach($errors->all() as $error)
+                    <p class="alert alert-danger">{{ $error }}</p>
+                @endforeach
+
+            @endif
+
             @yield('main')
 
         </div>
