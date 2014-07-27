@@ -11,11 +11,7 @@
                     <div class="buttons_review">
                         <p>
                             {{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
-                            @if(Auth::user())
-                                @if (!Auth::user()->resource->contains($resource->id)) 
-                                    {{ link_to_route('addToUser', 'Add to My Home', $resource->id, array('class' => 'btn btn-warning')) }} 
-                                @endif
-                            @endif
+                            @include('template.addToUserButton')
                         </p>
 
                         @include('template.review')

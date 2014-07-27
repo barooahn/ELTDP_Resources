@@ -51,14 +51,9 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 					        	</p>
 					        	<p>
 					        		{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
+									@include('template.addToUserButton')
 					        	</p>
 					    	</div>
-
-					      	@if ($resource->private == 1)
-						    	<div class="private">
-						    		<p><strong>Private</strong></p>
-						    	</div>
-						    @endif
 					    </div>
 				  </div>
 
@@ -67,7 +62,7 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 		</div>
 
 
-		<div class="col-xs-12 col-sm-6 col-md-6">
+		<div class="col-xs-12 col-sm-12 col-md-6">
 
 			<h3  class="centered">Your resources </h3>
 

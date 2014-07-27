@@ -229,13 +229,18 @@ class UsersController extends BaseController {
 		$resource = Resource::findOrFail($resource_id);
 		$user = Auth::user();
 
-
 		if (!$user->resource->contains($resource->id)) {
 		    $user->resource()->save($resource);
 		    return Redirect::back()->with('message', "$resource->name Added to your account.");
 		}
 		
 		return Redirect::back()->with('warning', "$resource->name already in your account.");
+	}
 
+	public function removeFromUser($resource_id){
+		$resource = Resource::findOrFail($resource_id);
+		$user = Auth::user();
+	    $user->resource()->detach($resource);
+	    return Redirect::back()->with('message', "$resource->name removed from your account.");
 	}
 }

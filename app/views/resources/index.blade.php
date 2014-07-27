@@ -52,7 +52,7 @@ ELTDP - All Resources
 
 						<p>
 							{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }}
-
+							@include('template.addToUserButton')
 						</p>
 
 						@include('template.review')

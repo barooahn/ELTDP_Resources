@@ -72,3 +72,6 @@ Route::resource('type', 'TypeController');
 Route::resource('users', 'UsersController');
 
 Route::get('addToUser/{id}', array('as' => 'addToUser', 'uses' =>'UsersController@addToUser'));
+
+Route::get('removeFromUser/{id}', array('as' => 'removeFromUser', 'uses' =>'UsersController@removeFromUser'));
+
