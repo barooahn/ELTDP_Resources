@@ -14,7 +14,7 @@ class Resource extends \Eloquent {
     );
 
 	// Don't forget to fill this array
-	protected $fillable = ['school', 'year', 'unit', 'name', 'type', 'description', 'file', 'user_id', 'private'];
+	protected $fillable = ['school', 'year', 'unit', 'name', 'type', 'description', 'file', 'user_id', 'private', 'picture'];
 
 	public function reviews()
     {
@@ -35,7 +35,8 @@ class Resource extends \Eloquent {
         return $query
             ->where('name', 'LIKE', "%$search%")
             ->orWhere('description', 'LIKE', "%$search%")
-            ->orWhere('school', 'LIKE', "%$search%");
+            ->orWhere('school', 'LIKE', "%$search%")
+            ->paginate(10);
     }
 
     public function recalculateRating()
@@ -47,21 +48,22 @@ class Resource extends \Eloquent {
         $this->save();
     }
 
-    public static function getExtensionType($file)
+    public static function getExtensionType($file, $destinationPath, $filename)
     {
         $extension = $file->getClientOriginalExtension();
 
         switch ($extension) {
             case 'pdf':
             case 'PDF':
-                $fileType = 'pdf';
+                exec("convert -density 200 $destinationPath/$filename.pdf[0] eltdpPictures/$filename.jpg");     
+                $pathToPicture = 'eltdpPictures/'. $filename .'.jpg';
                 break;
             
             case 'doc':
             case 'DOC':
             case 'docx':
             case 'DOCX':
-                $fileType = 'word';
+                $pathToPicture = 'word';
                 break;
             
             case 'jpg':
@@ -69,25 +71,34 @@ class Resource extends \Eloquent {
             case 'png':
             case 'PNG':
             case 'bmp':
-                $fileType = 'image';
-                break;
+
+                $file = 'eltdpResources/'. $filename .'.'. $extension;
+                $newfile = 'eltdpPictures/'. $filename .'.'. $extension;
+
+                if(copy($file, $newfile)) {
+                    $pathToPicture = $newfile;
+                    break;
+                } else {
+                    $pathToPicture = "failed to copy $file...\n";
+                    break;
+                }
             
             case 'mp3':
             case 'MP3':
-                $fileType = 'audio';
+                $pathToPicture = 'audio';
                 break;
 
             case 'mp4':
             case 'MP4':
-                $fileType = 'video';
+                $pathToPicture = 'video';
                 break;
                 
             default:
-                $fileType = null;
+                $pathToPicture = null;
                 break;
         }
         
-        return $fileType;
+        return $pathToPicture;
     }
 
 }

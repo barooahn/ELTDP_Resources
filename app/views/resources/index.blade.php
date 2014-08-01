@@ -13,8 +13,14 @@ ELTDP - All Resources
 
 		<h1>All Resources</h1>
 
-		<p>{{ link_to_route('resources.create', 'Add new resource', array(), array('class' => 'btn btn-info')) }}</p>
+		{{ link_to_route('resources.create', 'Add new resource', array(), array('class' => 'btn btn-info')) }}
 
+		<div class="centered">
+
+		{{ $resources->links() }}
+
+		
+		</div>
 		@foreach($resources as $resource)
 
 			@if ($resource->private != 1)
@@ -22,11 +28,11 @@ ELTDP - All Resources
 				<div class="col-sm-12 col-md-12 row_bottom_pad thumbnail">
 					<div class="col-sm-4 col-md-4 row_bottom_pad ">
 						<h4>{{ $resource->name }}</h4>
-						@if($resource->file)
+						@if($resource->picture)
 
 							<div class="frame">
 							
-							{{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
+							{{HTML::image($resource->picture, $resource->name ,$attributes = array('width' => '100%'))}}
 
 							</div>
 						@else
@@ -64,6 +70,8 @@ ELTDP - All Resources
 
 			@endif
 		@endforeach
+
+		<div class="centered">{{ $resources->links(); }}</div>
 
 	@else 
 	

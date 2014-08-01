@@ -67,10 +67,10 @@ ELTDP - {{$resource->name}}
 		<div class="col-md-12 ">	
 			<div class="thumbnail thumbnail_small">
 
-				@if($resource->file)
+				@if($resource->picture)
 
 						    		
-					{{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
+					{{HTML::image($resource->picture, $resource->name ,$attributes = array('width' => '100%'))}}
 				@else
 					<img data-src="holder.js/300x200" alt="...">
 				@endif
@@ -85,20 +85,12 @@ ELTDP - {{$resource->name}}
 
 					<p>Unit : {{ $resource->unit }}</p>
 
-					
-				</div>
+			    <!--reviews -->
+               @include('template.review')
+          </div>
 
-			<!--reviews -->
-              <div class="ratings">
-                  <p class="pull-right">{{$resource->count_rating}} {{ Str::plural('review', $resource->count_rating);}}</p>
-                  <p>
-                    @for ($i=1; $i <= 5 ; $i++)
-                      <span class="glyphicon glyphicon-star{{ ($i <= $resource->cache_rating) ? '' : '-empty'}}"></span>
-                    @endfor
-                    {{ number_format($resource->cache_rating, 1);}} stars
-                  </p>
-              </div>
-            </div>
+          <!--end of caption-->
+          </div>
             <div class="well" id="reviews-anchor">
               <div class="row">
                 <div class="col-md-12">

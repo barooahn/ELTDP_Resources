@@ -2,7 +2,7 @@
     <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="thumbnail thumbnail_small">
             <div class="frame">     
-                {{HTML::image($resource->file, $resource->name ,$attributes = array('width' => '100%'))}}
+                {{HTML::image($resource->picture, $resource->name ,$attributes = array('width' => '100%'))}}
             </div>
             <div class="caption">
                 <h3>{{ $resource->name }}</h3>

@@ -19,7 +19,7 @@ class ResourcesController extends \BaseController {
 
 	public function index()
 	{
-		$resources = Resource::orderBy('created_at', 'DESC')->get();
+		$resources = Resource::orderBy('created_at', 'DESC')->paginate(10);
 
 		return View::make('resources.index', array('resources' => $resources));
 	}
@@ -66,24 +66,22 @@ class ResourcesController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput()->with('message', 'Validor failed.');;
 		}
 
-
-
 		if (Input::file('file'))
 		{
 			$file = Input::file('file');
+
+			$extension = $file->getClientOriginalExtension();
 			$destinationPath = 'eltdpResources';
 			$filename = preg_replace('/\s+/', '_', $data['name']);
-			$extension = $file->getClientOriginalExtension();
 			$uploadSuccess = $file->move($destinationPath, $filename .'.'. $extension);
-
-			
 				
 			if ($uploadSuccess) {
+
+				$data['picture'] = Resource::getExtensionType($file, $destinationPath, $filename);
 
 				$data['file'] = $destinationPath .'/'. $filename .'.'. $extension;
 
 				$resourceId = $this->resource->create($data)->id;
-
 
 				return Redirect::route('resources.show', $resourceId)
 				->with('message', 'Resource saved.');
