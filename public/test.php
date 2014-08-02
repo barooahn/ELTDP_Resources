@@ -1,6 +1,8 @@
 <?php 
 
-exec("soffice.exe --convert-to pdf:pdf eltdpResources/pigs565.docx");
+chdir('libreoffice/program');
+exec("soffice.exe --headless -convert-to pdf Animal_flashcards_docx.docx");
+
 
 echo ' Converted';
 ?>
