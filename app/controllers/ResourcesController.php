@@ -79,16 +79,23 @@ class ResourcesController extends \BaseController {
 
 				$data['picture'] = Resource::getExtensionType($file, $destinationPath, $filename);
 
-				$data['file'] = $destinationPath .'/'. $filename .'.'. $extension;
+				if($data['picture']){
 
-				$resourceId = $this->resource->create($data)->id;
+					$data['file'] = $destinationPath .'/'. $filename .'.'. $extension;
 
-				return Redirect::route('resources.show', $resourceId)
-				->with('message', 'Resource saved.');
+					$resourceId = $this->resource->create($data)->id;
 
-			}
+					return Redirect::route('resources.show', $resourceId)
+					->with('message', 'Resource saved.');
 
-			else {
+				} else {
+					Resource::destroy($this->resource->id);
+					return Redirect::back()
+					->withInput()
+					->with('message', 'The file you are trying to upload is not supported.<br> Supported file types are pdf, doc, docx, jpg, gif, bmp, mp3, mp4');
+				} 
+
+			} else {
 
 				return Redirect::back()
 					->withInput()
@@ -209,5 +216,11 @@ class ResourcesController extends \BaseController {
 		$resource->private = 1;
 		$resource->save();
 		return View::make('users.show');
+	}
+
+	public function getDownload()
+	{
+		$file = Input::get('file');
+		return Response::download($file);
 	}
 }

@@ -70,6 +70,8 @@ class Resource extends \Eloquent {
                     chdir('libreoffice/program');
                     exec("soffice.exe --headless -convert-to pdf $filename.$extension");
                     exec("convert -density 200 $filename.pdf[0] ../../eltdpPictures/$filename.jpg");
+                    unlink($filename .'.'.$extension);
+                    unlink($filename .'.pdf');
                     $pathToPicture = 'eltdpPictures/'. $filename .'.jpg';
                     break;
                 }
@@ -96,15 +98,18 @@ class Resource extends \Eloquent {
             
             case 'mp3':
             case 'MP3':
-                $pathToPicture = 'audio';
+
+                $pathToPicture = 'img/audio.png';
                 break;
 
             case 'mp4':
             case 'MP4':
+                exec("convert -quiet $destinationPath/$filename.mp4[100] eltdpPictures/$filename.png");     
+                $pathToPicture = 'eltdpPictures/'. $filename .'.png';
+                break;
             case 'avi':
             case 'AVI':
-                exec("convert -quiet $destinationPath/$filename.mp4[10] eltdpPictures/$filename.jpg");     
-                $pathToPicture = 'eltdpPictures/'. $filename .'.jpg';
+                $pathToPicture = null;
                 break;
                 
             default:

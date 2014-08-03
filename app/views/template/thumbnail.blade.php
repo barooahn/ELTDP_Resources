@@ -6,6 +6,9 @@
             </div>
             <div class="caption">
                 <h3>{{ $resource->name }}</h3>
+                <p>
+                    @include('template.downloadButton')
+                </p>
                 <p>{{ implode(' ', array_slice(explode(' ', $resource->description), 0, 30)) }}...</p>
                 <div class="thumb_container">
                     <div class="buttons_review">

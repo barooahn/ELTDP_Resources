@@ -57,6 +57,7 @@ ELTDP - All Resources
 						<p>Unit : {{ $resource->unit }}</p>
 
 						<p>
+							@include('template.downloadButton')
 							{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }}
 							@include('template.addToUserButton')
 						</p>

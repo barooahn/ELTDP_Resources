@@ -76,6 +76,8 @@ ELTDP - {{$resource->name}}
 				@endif
 				<div class="caption">
 
+          @include('template.downloadButton')
+
 					<h2>Description</h2>
 					<p>{{$resource-> description}}</p>
 					

@@ -57,6 +57,8 @@ Route::resource('resources', 'ResourcesController');
 
 Route::post('resources/{id}', 'ResourcesController@postReview');
 
+Route::get('download', array('as' => 'download', 'uses' =>'ResourcesController@getDownload'));
+
 Route::get('makePrivate/{id}', array('as' => 'makePrivate', 'uses' =>'ResourcesController@makePrivate'));
 
 Route::get('makePublic/{id}', array('as' => 'makePublic', 'uses' =>'ResourcesController@makePublic'));
