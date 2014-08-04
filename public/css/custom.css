@@ -61,7 +61,7 @@
 }    
 
 .thumbnail_small {
-     min-height: 568px;
+     height: 568px;
 }
 
 .thumb_container {
@@ -71,6 +71,11 @@
     height: 50px;
     bottom: 7%;
     width: 80%;
+}
+
+.thumb_caption {
+    height:200px;
+    overflow: hidden;
 }
 
 input {
