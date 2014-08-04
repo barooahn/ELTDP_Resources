@@ -211,20 +211,20 @@ class UsersController extends BaseController {
 
        	$user = User::where($column , '=', $email)->first();
 
-		if($user->key !== $key)
+		if($user->user_key !== $key)
 		{
 				// Redirect to error page or something
-				return 'not ok';
+				return Redirect::to('login')->with('warning', 'Please check your email address and click the link. <br/> Your account is still not activated!');
 		}
 
 		// Activate the recipient and clear the validation key
 		$user->verified = true;
-		$user->key = '';
+		$user->user_key = '';
 		$user->save();
 		// display success message
-		return Redirect::to('login')->with('message', 'Your account is now valid.');
-
+		return Redirect::to('login')->with('message', 'Your account is now activated.');
 	}
+
 	public function addToUser($resource_id){
 		$resource = Resource::findOrFail($resource_id);
 		$user = Auth::user();

@@ -85,3 +85,41 @@ input {
 .ratings{
   color: #cd7f32;
 }
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.input_file{
+    width:450px;
+}
+
+.form_right {
+
+    float:right;
+}
+
+.form_left {
+
+    float:left;
+}
+
+.create_width  {
+    width:100% !important;
+} 

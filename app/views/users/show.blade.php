@@ -45,15 +45,15 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 					    	<div class="frame"> 	
 					      		{{HTML::image($resource->picture, $resource->name ,$attributes = array('width' => '100%'))}}
 					     	</div>
-					      	<div class="caption">
+					      	<div class="caption thumb_caption">
 					        	<h3>{{ $resource->name }}</h3>
-					        	<p>{{ implode(' ', array_slice(explode(' ', $resource->description), 0, 30)) }}...
-					        	</p>
-					        	<p>
-					        		{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
-									@include('template.addToUserButton')
-					        	</p>
-					    	</div>
+					        	{{ implode(' ', array_slice(explode(' ', $resource->description), 0, 30)) }}...
+					       	</div>
+
+			        		{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
+							@include('template.addToUserButton')
+
+					    	@include('template.review')
 					    </div>
 				  </div>
 
@@ -73,10 +73,11 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 					    	<div class="frame"> 	
 					      		{{HTML::image($resource->picture, $resource->name ,$attributes = array('width' => '100%'))}}
 					     	</div>
-					      	<div class="caption">
+					      	<div class="caption thumb_caption">
 					        	<h3>{{ $resource->name }}</h3>
-					        	<p>{{ implode(' ', array_slice(explode(' ', $resource->description), 0, 30)) }}...
-					        	</p>
+					        	{{ implode(' ', array_slice(explode(' ', $resource->description), 0, 30)) }}...
+					        </div>
+
 					        	<p>
 					        		{{ link_to_route('resources.show', 'More...', $resource->id, array('class' => 'btn btn-info')) }} 
 					        		@if ($resource->private != 1)
@@ -86,13 +87,15 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 					        			{{ link_to_route('makePublic', 'Make Public', $resource->id, array('class' => 'btn btn-success')) }}
 					        		@endif
 					        	</p>
-					    	</div>
+					    	
 
 					      	@if ($resource->private == 1)
 						    	<div class="private">
 						    		<p><strong>Private</strong></p>
 						    	</div>
 						    @endif
+
+						    @include('template.review')
 					    </div>
 				  </div>
 

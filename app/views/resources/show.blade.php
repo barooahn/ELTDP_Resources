@@ -65,7 +65,7 @@ ELTDP - {{$resource->name}}
 	<div class="row">
 
 		<div class="col-md-12 ">	
-			<div class="thumbnail thumbnail_small">
+			<div class="thumbnail">
 
 				@if($resource->picture)
 
@@ -77,6 +77,8 @@ ELTDP - {{$resource->name}}
 				<div class="caption">
 
           @include('template.downloadButton')
+          @include('template.addToUserButton')
+
 
 					<h2>Description</h2>
 					<p>{{$resource-> description}}</p>
@@ -156,6 +158,7 @@ ELTDP - {{$resource->name}}
 
 	<!-- end of reviews -->
 
+  @if(!empty($resource->user->id))
 
 		<div class="col-md-12">
 
@@ -168,6 +171,7 @@ ELTDP - {{$resource->name}}
 			@endforeach
 
 		</div>
+  @endif
 
 	</div>
 

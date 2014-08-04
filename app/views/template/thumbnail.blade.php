@@ -15,7 +15,6 @@
                 <div class="buttons_review">
                     <p>
                         @include('template.moreButton') 
-                        @include('template.addToUserButton')
                         @include('template.downloadButton')
                     </p>
 

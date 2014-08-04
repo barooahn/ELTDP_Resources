@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -19,6 +19,8 @@
         <li {{ (Request::is('resources') ? 'class="active"' : '') }}>{{ link_to_route('resources.index', 'Browse Resources') }} </li>
        
         <li>
+
+        <li {{ (Request::is('help') ? 'class="active"' : '') }}>{{ HTML::link('help', ' Help', '', '', '') }}</li>
 
 
           {{ Form::open(array('route' => 'search', 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}

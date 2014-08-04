@@ -16,6 +16,11 @@ Route::get('/', function()
 	return View::make('home');
 });
 
+Route::get('help', function()
+{
+	return View::make('help');
+});
+
 Route::get('home', function()
 {
 	return View::make('home');
@@ -52,6 +57,8 @@ Route::post('login', 'UsersController@postLogin');
 Route::get('register', 'UsersController@create');
 
 Route::get('logout', 'UsersController@getLogout');
+
+Route::get('confirm', 'UsersController@getConfirm');
 
 Route::resource('resources', 'ResourcesController');
 

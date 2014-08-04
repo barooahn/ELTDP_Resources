@@ -14,16 +14,6 @@ ELTDP - Login
         <div class="row">
 
             <section id="content">
-
-                @if(Session::has('message'))
-                    <p class="alert">{{ Session::get('message') }}</p>
-
-                @endif
-
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-
             
                 {{ Form::open(array('url' => 'login', 'POST')) }}
                     
