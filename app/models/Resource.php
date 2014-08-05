@@ -120,4 +120,14 @@ class Resource extends \Eloquent {
         return $pathToPicture;
     }
 
+    public static function getProducedUnitOrdered($user_id) {
+        $unitOrdered = DB::table('resources')
+            ->where('user_id', '=', $user_id)
+            ->orderby('school', 'ASC' )
+            ->orderby('Year', 'ASC' )
+            ->orderby('unit', 'ASC' )
+            ->get();
+        return $unitOrdered;
+    }
+
 }

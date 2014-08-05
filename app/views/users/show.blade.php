@@ -37,8 +37,11 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 		<div class="col-xs-12 col-sm-12 col-md-6">
 
 			<h3 class="centered">Resources you have tried </h3>
-
+	
 			@foreach (User::showLiked(Auth::user()->id) as $resource)
+
+				{{ 'Year: '. $resource->year }}
+				{{ 'Unit: '. $resource->unit }}
 
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					    <div class="thumbnail thumbnail_small">
@@ -66,9 +69,14 @@ ELTDP - {{ ucwords(Auth::user()->name)}}
 
 			<h3  class="centered">Your resources </h3>
 
-			@foreach (User::find(Auth::user()->id)->resources as $resource)
+			@foreach (Resource::getProducedUnitOrdered(Auth::user()->id) as $resource)
+
+
 
 				  <div class="col-xs-12 col-sm-6 col-md-6">
+				  		{{  $resource->school }}
+				  		{{  $resource->year }}
+						{{  $resource->unit }}
 					    <div class="thumbnail thumbnail_small">
 					    	<div class="frame"> 	
 					      		{{HTML::image($resource->picture, $resource->name ,$attributes = array('width' => '100%'))}}

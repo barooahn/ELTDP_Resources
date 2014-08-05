@@ -37,7 +37,7 @@
 
  .frame {
 
-  height:270px;
+  height:250px;
   overflow: hidden;
  }
 
@@ -74,7 +74,7 @@
 }
 
 .thumb_caption {
-    height:200px;
+    height:225px;
     overflow: hidden;
 }
 
