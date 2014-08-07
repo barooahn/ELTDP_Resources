@@ -19,13 +19,12 @@ web1:
   php_extensions: 
     - pdo_mysql
     - mcrypt
-    - eaccelerator
     - memcached
     - curl
     - imagick
     - zip
     - mbstring
   php_version: 5.4.14
-  shared_writable_dirs: 
+  shared_writable_dirs:
     - /eltdpResources
     - /eltdpPictures
