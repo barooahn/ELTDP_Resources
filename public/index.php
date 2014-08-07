@@ -46,4 +46,6 @@ $app = require_once __DIR__.'/../bootstrap/start.php';
 |
 */
 
+ini_set('eaccelerator.enable', 0);
+
 $app->run();
