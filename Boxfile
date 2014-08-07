@@ -13,7 +13,7 @@ web1:
     - "php artisan migrate:install"
     - "php artisan migrate"
   document_root: /public
-  name: your-app-name
+  name: eltdp
   php_extensions: 
     - pdo_mysql
     - mcrypt
