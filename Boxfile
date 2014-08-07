@@ -23,6 +23,8 @@ web1:
     - memcached
     - curl
     - imagick
+    - zip
+    - mbstring
   php_version: 5.4.14
   shared_writable_dirs: 
     - /eltdpResources
