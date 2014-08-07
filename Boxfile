@@ -1,32 +1,27 @@
-global:
-  	env:
-    	- LARAVEL_ENV: production
-web1:
-	name: eltdp
-	shared_writable_dirs:
-	    - /eltdpResources
-	    - /eltdpPictures
-	document_root: /public
-	php_version: 5.5.12
-	php_extensions:
-	    - pdo_mysql
-	    - mcrypt
-	    - eaccelerator
-	    - memcached
-	    - curl
-	    - imagick
-	after_build:
-	    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install --prefer-source"
-
-	before_deploy:
-	    - "php artisan migrate:install"
-	    - "php artisan migrate"
-	after_deploy:
-	    - "rm -f eltdpResources/cache/*"
-	    - "rm -f eltdpResources/views/*"
-	    - "rm -f eltdpPictures/cache/*"
-	    - "rm -f eltdpPictures/views/*"
-cache1:
-	type: memcached
-db1:
-	type: mysql
+--- 
+global: 
+  env: 
+    - 
+      LARAVEL_ENV: production
+web1: 
+  after_deploy: 
+    - "rm -f eltdpResources/cache/*"
+    - "rm -f eltdpResources/views/*"
+    - "rm -f eltdpPictures/cache/*"
+    - "rm -f eltdpPictures/views/*"
+  before_deploy: 
+    - "php artisan migrate:install"
+    - "php artisan migrate"
+  document_root: /public
+  name: your-app-name
+  php_extensions: 
+    - pdo_mysql
+    - mcrypt
+    - eaccelerator
+    - memcached
+    - curl
+    - imagick
+  php_version: "5.3.8"
+  shared_writable_dirs: 
+    - /eltdpResources
+    - /eltdpPictures
