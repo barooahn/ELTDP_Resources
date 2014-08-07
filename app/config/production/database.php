@@ -11,6 +11,7 @@ return array(
             'username' => $_SERVER['DB1_USER'],
             'password' => $_SERVER['DB1_PASS'],
             'charset'  => 'utf8',
+            'collation' => 'utf8_unicode_ci',
             'prefix'   => '',
         ),
     ),
