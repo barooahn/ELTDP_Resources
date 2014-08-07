@@ -12,6 +12,8 @@ web1:
   before_deploy: 
     - "php artisan migrate:install"
     - "php artisan migrate"
+  after_build: 
+    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install"
   document_root: /public
   name: eltdp
   php_extensions: 
@@ -21,7 +23,7 @@ web1:
     - memcached
     - curl
     - imagick
-  php_version: "5.3.8"
+  php_version: 5.4.14
   shared_writable_dirs: 
     - /eltdpResources
     - /eltdpPictures
