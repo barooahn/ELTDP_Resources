@@ -2,7 +2,7 @@ global:
   	env:
     	- LARAVEL_ENV: production
 web1:
-	name: your-app-name
+	name: eltdp
 	shared_writable_dirs:
 	    - /eltdpResources
 	    - /eltdpPictures
@@ -14,6 +14,7 @@ web1:
 	    - eaccelerator
 	    - memcached
 	    - curl
+	    - imagick
 	after_build:
 	    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install --prefer-source"
 
