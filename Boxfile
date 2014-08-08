@@ -26,6 +26,12 @@ web1:
     - mbstring
   php_version: 5.4.14
   shared_writable_dirs:
+  	- app/storage/cache
+	- app/storage/database
+	- app/storage/logs
+	- app/storage/sessions
+	- app/storage/views
+	- app/storage/meta
     - /eltdpResources
     - /eltdpPictures
 db1:
