@@ -14,9 +14,6 @@ web1:
     - "rm -f public/eltdpResources/views/*"
     - "rm -f public/eltdpPictures/cache/*"
     - "rm -f public/eltdpPictures/views/*"
-  before_deploy: 
-    - "php artisan migrate:install"
-    - "php artisan migrate"
   document_root: /public
   name: eltdp
   php_extensions: 
