@@ -27,6 +27,8 @@ web1:
     - imagick
     - zip
     - mbstring
+    - mysqli
+    - mysql
   php_version: "5.4.14"
   shared_writable_dirs: 
     - app/storage/cache
