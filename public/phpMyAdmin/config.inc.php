@@ -26,8 +26,12 @@ $i = 0;
  */
 $i++;
 /* Authentication type */
-$cfg['Servers'][$i]['auth_type'] = 'cookie';
+$cfg['Servers'][$i]['auth_type'] = 'config';
 /* Server parameters */
+$cfg['Servers'][$i]['user'] = 'dodie'; // database Credentials username
+ 
+$cfg['Servers'][$i]['password'] = 'FHR0q5zG'; // database Credentials password
+
 $cfg['Servers'][$i]['host'] = 'tunnel.pagodabox.com';
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
 $cfg['Servers'][$i]['port'] = '3306';
