@@ -10,10 +10,10 @@ web1:
   after_build: 
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install"
   after_deploy: 
-    - "rm -f eltdpResources/cache/*"
-    - "rm -f eltdpResources/views/*"
-    - "rm -f eltdpPictures/cache/*"
-    - "rm -f eltdpPictures/views/*"
+    - "rm -f public/eltdpResources/cache/*"
+    - "rm -f public/eltdpResources/views/*"
+    - "rm -f public/eltdpPictures/cache/*"
+    - "rm -f public/eltdpPictures/views/*"
   before_deploy: 
     - "php artisan migrate:install"
     - "php artisan migrate"
@@ -37,5 +37,5 @@ web1:
     - app/storage/sessions
     - app/storage/views
     - app/storage/meta
-    - /eltdpResources
-    - /eltdpPictures
+    - public/eltdpResources
+    - public/eltdpPictures

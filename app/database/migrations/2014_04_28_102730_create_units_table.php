@@ -14,7 +14,7 @@ class CreateUnitsTable extends Migration {
 	{
 		Schema::create('units', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('unit');
+			$table->string('unit');
 			$table->integer('year_id');
 			$table->timestamps();
 		});
