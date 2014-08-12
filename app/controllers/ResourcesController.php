@@ -63,7 +63,7 @@ class ResourcesController extends \BaseController {
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withErrors($validator)->withInput()->with('message', 'Please check the following errors:');;
+			return Redirect::back()->withErrors($validator)->withInput()->with('message', 'Please check the following error:');;
 		}
 
 		if (Input::file('file'))
