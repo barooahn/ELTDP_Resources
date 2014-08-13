@@ -23,7 +23,6 @@ web1:
     - imagick
     - zip
     - mbstring
-<<<<<<< HEAD
     - mysqli
     - mysql
   php_upload_max_filesize: "20M"
@@ -50,9 +49,3 @@ web1:
     - public/LibreOffice2
     - app/LibreOffice2
     - LibreOffice2
-=======
-  php_version: 5.4.14
-  shared_writable_dirs: 
-    - /eltdpResources
-    - /eltdpPictures
->>>>>>> parent of cf98c74... removed  eaccelerator from boxfile
