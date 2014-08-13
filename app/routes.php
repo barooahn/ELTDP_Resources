@@ -43,9 +43,9 @@ Route::get('search', array('as' => 'search', function()
 		
 	} else {
 		
-	$resources = Resource::search($query)->get();
+		$resources = Resource::search($query)->get();
 
-	return View::make('resources.index')->withResources($resources);
+		return View::make('resources.index')->withResources($resources);
 	}
 
 }));

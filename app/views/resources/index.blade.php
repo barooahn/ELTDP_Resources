@@ -17,7 +17,7 @@ ELTDP - All Resources
 
 		<div class="centered">
 
-		{{ $resources->links() }}
+
 
 		
 		</div>
@@ -72,7 +72,7 @@ ELTDP - All Resources
 			@endif
 		@endforeach
 
-		<div class="centered">{{ $resources->links(); }}</div>
+		<div class="centered"></div>
 
 	@else 
 	
