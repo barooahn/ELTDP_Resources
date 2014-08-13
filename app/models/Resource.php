@@ -71,9 +71,7 @@ class Resource extends \Eloquent {
                 if(copy($file, $newfile)) {
                     chdir('LibreOffice2/cde-package/cde-root/home/robert/');
                     exec("./libreoffice.cde --headless -convert-to pdf $filename.$extension");
-                    exec("convert -density 200 $filename.pdf[0] ../../eltdpPictures/$filename.jpg");
-                    unlink($filename .'.'.$extension);
-                    unlink($filename .'.pdf');
+                    
                     $pathToPicture = 'eltdpPictures/'. $filename .'.jpg';
                     break;
                 }
