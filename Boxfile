@@ -42,9 +42,5 @@ web1:
     - app/storage/views
     - app/storage/meta
     - public/eltdpResources
-    - app/eltdpResources
-    - eltdpResources
     - public/eltdpPictures
     - public/LibreOffice2
-    - app/LibreOffice2
-    - LibreOffice2
