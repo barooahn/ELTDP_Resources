@@ -69,7 +69,7 @@ class Resource extends \Eloquent {
                 $file = 'eltdpResources/'. $filename .'.'. $extension;
                 $newfile = $pathToLibre . $filename .'.'. $extension;
                 if(copy($file, $newfile)) {
-                    chdir('public/LibreOffice2/cde-package/cde-root/home/robert/');
+                    chdir('LibreOffice2/cde-package/cde-root/home/robert/');
                     exec("./libreoffice.cde --headless -convert-to pdf $filename.$extension");
                     exec("convert -density 200 $filename.pdf[0] ../../eltdpPictures/$filename.jpg");
                     unlink($filename .'.'.$extension);
