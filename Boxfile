@@ -7,8 +7,6 @@ global:
     - 
       LARAVEL_ENV: production
 web1: 
-  after_build: 
-    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install"
   after_deploy: 
     - "rm -f storage/cache/*"
     - "rm -f storage/views/*"
@@ -32,8 +30,6 @@ web1:
     - app/storage/sessions
     - app/storage/views
     - app/storage/meta
-    - public/eltdpResources
-    - public/eltdpPictures
-    - eltdpResources
-    - eltdpPictures
+    - app/eltdpResources
+    - app/eltdpPictures
     - public/LibreOffice2/cde-package/cde-root/home/robert/*
