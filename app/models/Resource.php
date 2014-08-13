@@ -30,6 +30,8 @@ class Resource extends \Eloquent {
     {
         return $this->belongsToMany('User')->withTimestamps();;
     }
+
+    
     public function scopeSearch($query, $search)
     {
         return $query
