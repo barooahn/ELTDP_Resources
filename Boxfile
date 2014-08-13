@@ -24,7 +24,7 @@ web1:
     - mbstring
     - mysqli
     - mysql
-    php_upload_max_filesize: "20M"
+    - php_upload_max_filesize: "20M"
   php_version: "5.4.14"
   shared_writable_dirs: 
     - app/storage/cache
