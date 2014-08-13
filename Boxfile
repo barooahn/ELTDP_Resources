@@ -10,10 +10,8 @@ web1:
   after_build: 
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install"
   after_deploy: 
-    - "rm -f public/eltdpResources/cache/*"
-    - "rm -f public/eltdpResources/views/*"
-    - "rm -f public/eltdpPictures/cache/*"
-    - "rm -f public/eltdpPictures/views/*"
+    - "rm -f storage/cache/*"
+    - "rm -f storage/views/*"
   document_root: /public
   name: eltdp
   php_extensions: 
@@ -36,5 +34,5 @@ web1:
     - app/storage/meta
     - public/eltdpResources
     - public/eltdpPictures
-    - public/LibreOffice2/cde-package/cde-root/home/robert/
-    - public/LibreOffice2/cde-package/cde-root/home/robert/Desktop
+    - LibreOffice2/cde-package/cde-root/home/robert/
+    - LibreOffice2/cde-package/cde-root/home/robert/Desktop
