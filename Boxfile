@@ -45,4 +45,4 @@ web1:
     - app/eltdpResources
     - eltdpResources
     - public/eltdpPictures
-    - public/LibreOffice2/cde-package/cde-root/home/robert/*
+    - public/LibreOffice2/cde-package/cde-root/home/robert/
