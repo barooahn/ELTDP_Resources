@@ -45,4 +45,6 @@ web1:
     - app/eltdpResources
     - eltdpResources
     - public/eltdpPictures
-    - public/LibreOffice2/
+    - public/LibreOffice2
+    - app/LibreOffice2
+    - LibreOffice2
