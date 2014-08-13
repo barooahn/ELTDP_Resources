@@ -13,7 +13,7 @@ class InsertUnitToResourcesTable extends Migration {
 	public function up()
 	{
 		Schema::table('resources', function(Blueprint $table) {
-			$table->string('unit');
+			$table->integer('unit');
 		});
 	}
 
