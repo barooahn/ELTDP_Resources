@@ -31,24 +31,15 @@ class Resource extends \Eloquent {
         return $this->belongsToMany('User')->withTimestamps();;
     }
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> origin/master
+
     public function scopeSearch($query, $search)
     {
         return $query
             ->where('name', 'LIKE', "%$search%")
             ->orWhere('description', 'LIKE', "%$search%")
             ->orWhere('school', 'LIKE', "%$search%")
-<<<<<<< HEAD
             ->orWhere('year', 'LIKE', "%$search%")
             ->orWhere('unit', 'LIKE', "%$search%");
-=======
-            ->orWhere('unit', 'LIKE', "%$search%")
-            ->orWhere('year', 'LIKE', "%$search%")
-            ->paginate(10);
->>>>>>> origin/master
     }
 
     public function recalculateRating()
