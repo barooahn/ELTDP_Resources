@@ -32,4 +32,7 @@ web1:
     - app/storage/meta
     - app/eltdpResources
     - app/eltdpPictures
+    - public/eltdpResources
+    - public/eltdpPictures
     - public/LibreOffice2/cde-package/cde-root/home/robert/*
+    - app/LibreOffice2/cde-package/cde-root/home/robert/*
