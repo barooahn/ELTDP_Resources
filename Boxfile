@@ -10,22 +10,31 @@ web1:
   after_build: 
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install"
   after_deploy: 
-    - "rm -f public/eltdpResources/cache/*"
-    - "rm -f public/eltdpResources/views/*"
-    - "rm -f public/eltdpPictures/cache/*"
-    - "rm -f public/eltdpPictures/views/*"
+    - "rm -f storage/cache/*"
+    - "rm -f storage/views/*"
   document_root: /public
   name: eltdp
   php_extensions: 
     - pdo_mysql
     - mcrypt
+    - eaccelerator
     - memcached
     - curl
     - imagick
     - zip
     - mbstring
+<<<<<<< HEAD
     - mysqli
     - mysql
+  php_upload_max_filesize: "20M"
+  php_post_max_size: "20M"
+  php_display_errors: "1"
+  php_max_execution_time: 30
+  php_max_input_time: 60
+  apache_access_log: false
+  apache_error_log: true
+  php_error_log: true
+  php_fpm_log: true
   php_version: "5.4.14"
   shared_writable_dirs: 
     - app/storage/cache
@@ -35,5 +44,15 @@ web1:
     - app/storage/views
     - app/storage/meta
     - public/eltdpResources
+    - app/eltdpResources
+    - eltdpResources
     - public/eltdpPictures
-    - public/LibreOffice2/cde-package/cde-root/home/robert/
+    - public/LibreOffice2
+    - app/LibreOffice2
+    - LibreOffice2
+=======
+  php_version: 5.4.14
+  shared_writable_dirs: 
+    - /eltdpResources
+    - /eltdpPictures
+>>>>>>> parent of cf98c74... removed  eaccelerator from boxfile

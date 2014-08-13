@@ -13,7 +13,7 @@ class InsertYearToResourcesTable extends Migration {
 	public function up()
 	{
 		Schema::table('resources', function(Blueprint $table) {
-			$table->string('year');
+			$table->integer('year');
 		});
 	}
 

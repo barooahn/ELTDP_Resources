@@ -31,14 +31,24 @@ class Resource extends \Eloquent {
         return $this->belongsToMany('User')->withTimestamps();;
     }
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> origin/master
     public function scopeSearch($query, $search)
     {
         return $query
             ->where('name', 'LIKE', "%$search%")
             ->orWhere('description', 'LIKE', "%$search%")
             ->orWhere('school', 'LIKE', "%$search%")
+<<<<<<< HEAD
             ->orWhere('year', 'LIKE', "%$search%")
             ->orWhere('unit', 'LIKE', "%$search%");
+=======
+            ->orWhere('unit', 'LIKE', "%$search%")
+            ->orWhere('year', 'LIKE', "%$search%")
+            ->paginate(10);
+>>>>>>> origin/master
     }
 
     public function recalculateRating()
@@ -68,17 +78,17 @@ class Resource extends \Eloquent {
                 $pathToLibre = 'LibreOffice2/cde-package/cde-root/home/robert/';
                 $file = 'eltdpResources/'. $filename .'.'. $extension;
                 $newfile = $pathToLibre . $filename .'.'. $extension;
+
                 if(copy($file, $newfile)) {
-                    chdir('public/LibreOffice2/cde-package/cde-root/home/robert/Desktop');
+                    chdir('LibreOffice2/cde-package/cde-root/home/robert/');
                     exec("./libreoffice.cde --headless -convert-to pdf $filename.$extension");
                     exec("convert -density 200 $filename.pdf[0] ../../eltdpPictures/$filename.jpg");
-                    unlink($filename .'.'.$extension);
-                    unlink($filename .'.pdf');
+
                     $pathToPicture = 'eltdpPictures/'. $filename .'.jpg';
                     break;
                 }
 
-                $pathToPicture = 'word';
+                $pathToPicture = getcwd();
                 break;
             
             case 'jpg':
@@ -120,16 +130,6 @@ class Resource extends \Eloquent {
         }
         
         return $pathToPicture;
-    }
-
-    public static function getProducedUnitOrdered($user_id) {
-        $unitOrdered = DB::table('resources')
-            ->where('user_id', '=', $user_id)
-            ->orderby('school', 'ASC' )
-            ->orderby('Year', 'ASC' )
-            ->orderby('unit', 'ASC' )
-            ->get();
-        return $unitOrdered;
     }
 
 }

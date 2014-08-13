@@ -25,8 +25,11 @@ $i = 0;
  * First server
  */
 $i++;
-/* Authentication type */
 $cfg['Servers'][$i]['auth_type'] = 'config';
+/* Server parameters */
+$cfg['Servers'][$i]['user'] = 'lory'; // database Credentials username
+ 
+$cfg['Servers'][$i]['password'] = '5VPwl1py'; // database Credentials password
 /* Server parameters */
 $cfg['Servers'][$i]['host'] = 'tunnel.pagodabox.com';
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
