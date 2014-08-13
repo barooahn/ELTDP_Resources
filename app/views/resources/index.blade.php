@@ -12,9 +12,11 @@ ELTDP - All Resources
 	@if($resources->count())
 
 		<h1>All Resources</h1>
-
-		{{ link_to_route('resources.create', 'Add new resource', array(), array('class' => 'btn btn-info')) }}
-
+		@if(Auth::user())
+			<p>
+				{{ link_to_route('resources.create', 'Add new resource', array(), array('class' => 'btn btn-info')) }}
+			</p>
+		@endif
 		<div class="centered">
 
 
