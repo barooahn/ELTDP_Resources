@@ -36,4 +36,7 @@ web1:
     - app/eltdpResources
     - eltdpResources
     - public/eltdpPictures
+<<<<<<< HEAD
     - public/LibreOffice2/cde-package/cde-root/home/robert/*
+=======
+>>>>>>> parent of ed50121... test new libre
