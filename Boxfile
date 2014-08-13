@@ -14,7 +14,6 @@ web1:
     - "rm -f storage/views/*"
   before_deploy:
     - "php artisan migrate:install"
-    - "php artisan migrate"
   document_root: /public
   name: eltdp
   php_extensions: 
