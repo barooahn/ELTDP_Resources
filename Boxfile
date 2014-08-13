@@ -34,4 +34,6 @@ web1:
     - app/storage/meta
     - public/eltdpResources
     - public/eltdpPictures
+    - eltdpResources
+    - eltdpPictures
     - public/LibreOffice2/cde-package/cde-root/home/robert/*
