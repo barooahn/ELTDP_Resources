@@ -1,0 +1,2 @@
+cd 'cde-root/home/robert'
+'./libreoffice.cde' '--headless' '-convert-to' 'pdf' 'Desktop/Motion_to_Continue_test.docx' '-outdir' 'Desktop/'
