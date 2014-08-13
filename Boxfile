@@ -12,6 +12,9 @@ web1:
   after_deploy: 
     - "rm -f storage/cache/*"
     - "rm -f storage/views/*"
+  before_deploy:
+    - "php artisan migrate:install"
+    - "php artisan migrate"
   document_root: /public
   name: eltdp
   php_extensions: 
@@ -36,7 +39,4 @@ web1:
     - app/eltdpResources
     - eltdpResources
     - public/eltdpPictures
-<<<<<<< HEAD
     - public/LibreOffice2/cde-package/cde-root/home/robert/*
-=======
->>>>>>> parent of ed50121... test new libre
