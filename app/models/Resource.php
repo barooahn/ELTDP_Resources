@@ -65,18 +65,13 @@ class Resource extends \Eloquent {
             case 'DOC':
             case 'docx':
             case 'DOCX':
-                $pathToLibre = 'libreoffice/program/';
+                $pathToLibre = 'LibreOffice2/cde-package/cde-root/home/robert/';
                 $file = 'eltdpResources/'. $filename .'.'. $extension;
                 $newfile = $pathToLibre . $filename .'.'. $extension;
-<<<<<<< HEAD
+
                 if(copy($file, $newfile)) {
                     chdir('LibreOffice2/cde-package/cde-root/home/robert/');
                     exec("./libreoffice.cde --headless -convert-to pdf $filename.$extension");
-=======
-                 if(copy($file, $newfile)) {
-                    chdir('libreoffice/program');
-                    exec("soffice.exe --headless -convert-to pdf $filename.$extension");
->>>>>>> parent of ed50121... test new libre
                     exec("convert -density 200 $filename.pdf[0] ../../eltdpPictures/$filename.jpg");
                     unlink($filename .'.'.$extension);
                     unlink($filename .'.pdf');
