@@ -30,6 +30,10 @@
   justify-content: space-around;
 }
 
+.buttons_inline {
+  display: inline-flex;
+}
+
 .padding {
 
 	margin-right: 10px;

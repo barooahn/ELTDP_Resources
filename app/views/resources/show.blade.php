@@ -76,9 +76,10 @@ ELTDP - {{$resource->name}}
 				@endif
 				<div class="caption">
 
-          @include('template.downloadButton')
-          @include('template.addToUserButton')
-
+          <span class="buttons_inline">@include('template.downloadButton')</span>
+          <span class="buttons_inline">@include('template.addToUserButton')</span>
+          <span class="buttons_inline">@include('template.deleteResourceButton')</span>
+          <span class="buttons_inline">@include('template.editResourceButton')</span>
 
 					<h2>Description</h2>
 					<p>{{$resource-> description}}</p>
