@@ -139,7 +139,24 @@ class ResourcesController extends \BaseController {
 	{
 		$resource = Resource::find($id);
 
-		return View::make('resources.edit', compact('resource'));
+		// queries the schools db table, orders by type and lists type and id
+	  	$school_options = DB::table('schools')->orderBy('type', 'asc')->lists('type','type');
+	  	$year_options = DB::table('years')->lists('year','year');
+	  	$unit_options = DB::table('units')->lists('unit','unit');
+	  	$resourceTypes_options = DB::table('resource_types')->orderBy('type', 'asc')->lists('type','type');
+
+	  	$options = [
+
+	  		'school_options' => $school_options, 
+	  		'year_options' => $year_options, 
+	  		'unit_options' =>  $unit_options,
+	  		'resourceType_options' => $resourceTypes_options
+	  	];
+
+	    return View::make('resources.edit', array('options' => $options, 'resource' => $resource));
+
+
+
 	}
 
 	/**
@@ -152,7 +169,7 @@ class ResourcesController extends \BaseController {
 	{
 		$resource = Resource::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Resource::$rules);
+		$validator = Validator::make($data = Input::all(), Resource::getRulesForUpdate($id));
 
 		if ($validator->fails())
 		{

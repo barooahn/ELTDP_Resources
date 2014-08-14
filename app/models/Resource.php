@@ -13,6 +13,19 @@ class Resource extends \Eloquent {
         'unit'			=> 'required'
     );
 
+    public static function getRulesForUpdate($id)
+    {
+        return [
+                    'type'          => 'required',
+                    'name'          => 'required|unique:resources,name,'.$id,
+                    'description'   => 'required|unique:resources,description,'.$id,
+                    'school'        => 'required',
+                    'year'          => 'required',
+                    'file'          => 'unique:resources,file,'.$id,
+                    'unit'          => 'required'
+        ];
+    }
+
 	// Don't forget to fill this array
 	protected $fillable = ['school', 'year', 'unit', 'name', 'type', 'description', 'file', 'user_id', 'private', 'picture'];
 
