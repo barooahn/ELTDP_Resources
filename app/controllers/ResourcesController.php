@@ -36,8 +36,8 @@ class ResourcesController extends \BaseController {
 	  	
 	  	// queries the schools db table, orders by type and lists type and id
 	  	$school_options = DB::table('schools')->orderBy('type', 'asc')->lists('type','type');
-	  	$year_options = DB::table('years')->orderBy('year', 'asc')->lists('year','year');
-	  	$unit_options = DB::table('units')->orderBy('unit', 'asc')->lists('unit','unit');
+	  	$year_options = DB::table('years')->lists('year','year');
+	  	$unit_options = DB::table('units')->lists('unit','unit');
 	  	$resourceTypes_options = DB::table('resource_types')->orderBy('type', 'asc')->lists('type','type');
 
 	  	$options = [

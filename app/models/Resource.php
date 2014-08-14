@@ -38,8 +38,8 @@ class Resource extends \Eloquent {
             ->where('name', 'LIKE', "%$search%")
             ->orWhere('description', 'LIKE', "%$search%")
             ->orWhere('school', 'LIKE', "%$search%")
-            ->orWhere('year', 'LIKE', "%$search%")
-            ->orWhere('unit', 'LIKE', "%$search%");
+            ->orWhere('year', 'LIKE', "%$search")
+            ->orWhere('unit', 'LIKE', "%$search");
     }
 
     public function recalculateRating()
@@ -74,8 +74,13 @@ class Resource extends \Eloquent {
                     chdir('LibreOffice2/cde-package/cde-root/home/robert/');
                     exec("./libreoffice.cde --headless -convert-to pdf $filename.$extension");
                     exec("convert -density 200 $filename.pdf[0] ../../eltdpPictures/$filename.jpg");
-
-                    $pathToPicture = 'eltdpPictures/'. $filename .'.jpg';
+                    if (file_exists ( 'eltdpPictures/'. $filename .'.jpg'))
+                    { 
+                        $pathToPicture = 'eltdpPictures/'. $filename .'.jpg';
+                        break;
+                    } else {
+                        $pathToPicture = $pathToPicture = 'img/msWord.jpg';
+                    }
                     break;
                 }
 
@@ -108,11 +113,18 @@ class Resource extends \Eloquent {
             case 'mp4':
             case 'MP4':
                 exec("convert -quiet $destinationPath/$filename.mp4[100] eltdpPictures/$filename.png");     
-                $pathToPicture = 'eltdpPictures/'. $filename .'.png';
-                break;
+                if (file_exists ( 'eltdpPictures/'. $filename .'.png'))
+                    { 
+                        $pathToPicture = 'eltdpPictures/'. $filename .'.png';
+                        break;
+                    } else {
+                        $pathToPicture = $pathToPicture = 'img/video2.jpg';
+                    }
+                    break;
+                
             case 'avi':
             case 'AVI':
-                $pathToPicture = null;
+                $pathToPicture = $pathToPicture = 'img/video2.jpg';
                 break;
                 
             default:
