@@ -176,6 +176,42 @@ class ResourcesController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
+		if (Input::file('file')){
+			$file = Input::file('file');
+
+			$extension = $file->getClientOriginalExtension();
+			$destinationPath = 'eltdpResources';
+			$filename = preg_replace('/\s+/', '_', $data['name']);
+			$uploadSuccess = $file->move($destinationPath, $filename .'.'. $extension);
+				
+			if ($uploadSuccess) {
+
+				$data['picture'] = Resource::getExtensionType($file, $destinationPath, $filename);
+
+				if($data['picture']){
+
+					$data['file'] = $destinationPath .'/'. $filename .'.'. $extension;
+
+					$resourceId = $this->resource->create($data)->id;
+
+					return Redirect::route('resources.show', $resourceId)
+					->with('message', 'Resource saved.');
+
+				} else {
+					Resource::destroy($this->resource->id);
+					return Redirect::back()
+					->withInput()
+					->with('message', 'The file you are trying to upload is not supported.<br> Supported file types are pdf, doc, docx, jpg, gif, bmp, mp3, mp4');
+				} 
+
+			} else {
+
+				return Redirect::back()
+					->withInput()
+					->withErrors($Validator)
+					->with('message', 'Please upload a file.');
+			}
+		}
 		$resource->update($data);
 
 		return Redirect::route('resources.index');
