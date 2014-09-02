@@ -12,7 +12,7 @@ ELTDP - Edit - {{$resource->name}}
 
 	<div class="row">
 	    <div class="col-md-12 col-md-12 col-md-12 col-lg-12">
-	    {{ Form::model($resource, array('method' => 'PATCH', 'route' => array('resources.update', $resource->id))) }}
+	    {{ Form::model($resource, array('method' => 'PATCH', 'route' => array('resources.update', $resource->id),'files' => true)) }}
 
 				<ul class ="form_left col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
